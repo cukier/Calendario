@@ -50,6 +50,16 @@ int ler_dado(int addr) {
 	return leitura;
 }
 
+int ler_segundos(int addr) {
+	int leitura, LSB, MSB;
+
+	leitura = ler_dado(addr);
+	LSB = (leitura | 0xF0) & 0x0F;
+	MSB = ((leitura | 0x0F) & 0x70) >> 4;
+
+	return 10 * MSB + LSB;
+}
+
 void ds1307_init(void) {
 	int seconds = 0;
 
@@ -60,7 +70,7 @@ void ds1307_init(void) {
 	i2c_write(0xD1);      // RD from RTC
 	seconds = i2c_read(0); // Read current "seconds" in DS1307
 	i2c_stop();
-	seconds &= 0x7F;
+//	seconds &= 0x7F;
 
 	delay_us(3);
 
@@ -78,22 +88,29 @@ void ds1307_init(void) {
 
 int main(void) {
 
-	if (check(disp_addr)) {
-		printf("\fErro, nao responde");
-		return 1;
-	} else {
-		printf("\fDisp. OK...");
-	}
+	/*	if (check(disp_addr)) {
+	 printf("\fErro, nao responde");
+	 return 1;
+	 } else {
+	 printf("\fDisp. OK...");
+	 }
 
-	ds1307_init();
+	 ds1307_init();*/
+
+	i2c_start();
+	i2c_write(0xD0);      // WR to RTC
+	i2c_write(0x00);      // REG 0
+	i2c_write(0); // Start oscillator with current "seconds value
+	i2c_stop();
 
 	while (TRUE) {
 		delay_ms(500);
-		segundos = ler_dado(sec_addr);
+//		segundos = ler_segundos(disp_addr);
+		segundos = ler_dado(disp_addr);
 		LSB = (segundos | 0xF0) & 0x0F;
 		MSB = ((segundos | 0x0F) & 0x70) >> 4;
-		printf("\f%u LSB:%u MSB:%u", segundos, LSB, MSB);
-		printf("\n%u%u", MSB, LSB);
+		printf("%2d LSB%2d MSB%2d", segundos, LSB, MSB);
+		printf("\n%2d", 10 * MSB + LSB);
 	}
 	return 0;
 }
