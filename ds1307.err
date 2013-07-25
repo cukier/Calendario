@@ -1,0 +1,3 @@
+Error[100]   ds1307.c 27 : USE parameter value is out of range   Not a number: PIN_C4
+      1 Errors,  0 Warnings.
+Build Failed.

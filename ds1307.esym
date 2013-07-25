@@ -1,0 +1,7 @@
+D G "__PCH__" 0 0 ""4.140""
+D G "__DEVICE__" 0 0 ""
+D G "__DATE__" 0 0 ""25-jul-13""
+D G "__TIME__" 0 0 ""15:34:10"" "* ds1307.c"
+C G "" 0 1 1 "*"
+D G "RTC_SDA" 0 24 "PIN_C4"
+D G "RTC_SCL" 0 25 "PIN_C3"
