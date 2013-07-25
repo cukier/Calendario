@@ -17,6 +17,18 @@
 
 int segundos, LSB, MSB;
 
+void apagar(int addr) {
+	i2c_write(addr);
+	i2c_write(sec_addr);
+	i2c_write(0);
+	i2c_write(0);
+	i2c_write(0);
+	i2c_write(0);
+	i2c_write(0);
+	i2c_write(0);
+	i2c_write(0);
+}
+
 short check(int addr) {
 	short ack = 1;
 	i2c_start();
@@ -46,6 +58,8 @@ int main(void) {
 	} else {
 		printf("\fDisp. OK...");
 	}
+
+	apagar(disp_addr);
 
 	while (TRUE) {
 		delay_ms(500);
