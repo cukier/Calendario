@@ -9,9 +9,9 @@
 //#device ADC = 10                      //Define 10 bits para o resultado da conversão AD
 #use delay (clock=8000000)	     //Aqui definimos a frequência do cristal para cálculo dos delays
 #fuses HS, NOWDT, PUT, BROWNOUT, NOLVP //Configuração dos fusíveis
-//#use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7)
+#use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7)
 #include "ds1307.c"
-#include "lcd_8b.c"
+//#include "lcd_8b.c"
 
 void main() {
 	BYTE sec;
@@ -24,23 +24,16 @@ void main() {
 
 //	ds1307_init();
 
-	// Set date for -> 04 de abril de 2009 - Sábado
-	// Set time for -> 11:07:00
-	//ds1307_set_date_time(3, 2, 12, 6, 8, 54, 0);
-
-	lcd_init();
-
-	printf(lcd, "\f");
+// Set date for -> 04 de abril de 2009 - Sábado
+// Set time for -> 11:07:00
+//ds1307_set_date_time(3, 2, 12, 6, 8, 54, 0);
 
 	while (true) {
 		ds1307_get_date(day, month, yr, dow);
 		ds1307_get_time(hrs, min, sec);
 
-		lcd_pos_xy(1, 1);
-		printf(lcd, "\%02d/\%02d/\%02d", day, month, yr);
-		//		lcd_pos_xy(1, 2);
-		printf(lcd, "\n");
-		printf(lcd, "\%02d:\%02d:\%02d", hrs, min, sec);
+		printf("\f%02d/\%02d/\%02d", day, month, yr);
+		printf("\n%02d:\%02d:\%02d", hrs, min, sec);
 
 		if (!input(PIN_B0)) {
 			day++;
@@ -218,9 +211,9 @@ void main() {
 //			strcpy(modo, "  ");
 //		}
 //
-//		printf(lcd, "\f%3s %02d/%02d/%04d", semana, tempo.date, tempo.month,
+//		printf("\f%3s %02d/%02d/%04d", semana, tempo.date, tempo.month,
 //				tempo.year);
-//		printf(lcd, "\n%2s %02d:%02d:%02d", modo, tempo.hours, tempo.minutes,
+//		printf("\n%2s %02d:%02d:%02d", modo, tempo.hours, tempo.minutes,
 //				tempo.seconds);
 //		delay_ms(500);
 //	}//infinit loop
@@ -340,10 +333,10 @@ void main() {
 ////addr[7] = i2c_read(0);
 ////i2c_stop();
 //
-////printf(lcd, "\f");
+////printf("\f");
 ////for (cont = 0; cont < 7; ++cont) {
 ////	if (cont == 5)
-////		printf(lcd, "\n");
-////	printf(lcd, "%x ", addr[cont]);
+////		printf("\n");
+////	printf("%x ", addr[cont]);
 ////
 ////}
