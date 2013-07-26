@@ -1,342 +1,118 @@
-///*
-// * calendario.c
-// *
-// *  Created on: 02/02/2012
-// *      Author: cuki
-// */
+//
+// Maurice Ribble
+// 4-17-2008
+// http://www.glacialwanderer.com/hobbyrobotics
+// source: http://www.glacialwanderer.com/hobbyrobotics/?p=12
+// This code tests the DS1307 Real Time clock on the Arduino board.
+// The ds1307 works in binary coded decimal or BCD.  You can look up
+// bcd in google if you aren't familior with it.  There can output
+// a square wave, but I don't expose that in this code.  See the
+// ds1307 for it's full capabilities.
 
-#include<18F452.h>                  //Aqui é incluso o header (*.h)  para o microcontrolador utilizado.
-//#device ADC = 10                      //Define 10 bits para o resultado da conversão AD
-#use delay (clock=8000000)	     //Aqui definimos a frequência do cristal para cálculo dos delays
-#fuses HS, NOWDT, PUT, BROWNOUT, NOLVP //Configuração dos fusíveis
-#use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7)
-#include "ds1307.c"
-//#include "lcd_8b.c"
+#include "Wire.h"
+#define DS1307_I2C_ADDRESS 0x68
 
-void main() {
-	BYTE sec;
-	BYTE min;
-	BYTE hrs;
-	BYTE day;
-	BYTE month;
-	BYTE yr;
-	BYTE dow;
-
-//	ds1307_init();
-
-// Set date for -> 04 de abril de 2009 - Sábado
-// Set time for -> 11:07:00
-//ds1307_set_date_time(3, 2, 12, 6, 8, 54, 0);
-
-	while (true) {
-		ds1307_get_date(day, month, yr, dow);
-		ds1307_get_time(hrs, min, sec);
-
-		printf("\f%02d/\%02d/\%02d", day, month, yr);
-		printf("\n%02d:\%02d:\%02d", hrs, min, sec);
-
-		if (!input(PIN_B0)) {
-			day++;
-			if (day > 31)
-				day = 1;
-			ds1307_set_date_time(day, month, yr, dow, hrs, min, sec);
-			delay_ms(300);
-		}
-		if (!input(PIN_C0)) {
-			month++;
-			if (month > 12)
-				month = 1;
-			ds1307_set_date_time(day, month, yr, dow, hrs, min, sec);
-			delay_ms(300);
-		}
-		if (!input(PIN_B1)) {
-			hrs++;
-			if (hrs > 23)
-				hrs = 0;
-			ds1307_set_date_time(day, month, yr, dow, hrs, min, sec);
-			delay_ms(300);
-		}
-		if (!input(PIN_B2)) {
-			min++;
-			if (min > 59)
-				min = 0;
-			ds1307_set_date_time(day, month, yr, dow, hrs, min, sec);
-			delay_ms(300);
-		}
-		delay_ms(500);
-	}
+// Convert normal decimal numbers to binary coded decimal
+byte decToBcd(byte val) {
+	return ((val / 10 * 16) + (val % 10));
 }
 
-//#include <18F452.h>
-//
-//#fuses hs
-//#use delay (clock = 8MHz, RESTART_WDT)
-//#use i2c (master,scl=pin_c3,sda=pin_c4,force_hw,fast = 100000)
-//
-//#include "lcd_8b.c"
-////#include "i2c.h"
-//#include <stdlib.h>
-//
-//#define _SECONDS    0x00
-//#define _MINUTES    0x01
-//#define _HOURS    0x02
-//#define _DAY      0x03
-//#define _DATE    0x04
-//#define _MONTH    0x05
-//#define _YEAR    0x06
-//#define _CONTROL    0x07
-//#define _MODO12    0x00
-//#define _MODO24    0x40
-//
-//void setMode(int modo);
-//int make4(int var, int nibble);
-//BYTE bin2bcd(BYTE binary_value);
-//BYTE bcd2bin(BYTE bcd_value);
-//void ds1307_set_date_time(BYTE day, BYTE mth, BYTE year, BYTE dow, BYTE hr,
-//		BYTE min, BYTE sec);
-//
-//struct {
-//	int seconds;
-//	int minutes;
-//	int hours;
-//	int PM;
-//	int modo24;
-//	int day;
-//	int date;
-//	int month;
-//	int year;
-//	int sqwe_rs;
-//} tempo;
-//
-//char semana[];
-//char modo[];
-//
-//#INT_TIMER2
-//void isr_timer2() {
-//	register int cont;
-//	register int aux;
-//
-//	i2c_start();
-//	i2c_write(0xD1);
-//	i2c_write(0x00);
-//	for (cont = 0x00; cont <= 0x07; ++cont) {
-//		if (cont == 0x07) {
-//			aux = i2c_read(0);
-//			i2c_stop();
-//		} else
-//			aux = i2c_read();
-//		if (aux != 0xFF) {
-//			switch (aux) {
-//			case _SECONDS:
-//				tempo.seconds = make4(aux, 1) * 10 + make4(aux, 0);
-//				break;
-//			case _MINUTES:
-//				tempo.minutes = 10 * make4(aux, 1) + make4(aux, 0);
-//				break;
-//			case _HOURS:
-//				tempo.hours = make4(aux, 0);
-//				if (bit_test(aux, 6)) {
-//					tempo.hours += bit_test(aux, 4) * 10;
-//					tempo.PM = bit_test(aux, 5);
-//					tempo.modo24 = 0;
-//				} else {
-//					tempo.hours += (0x30 && make4(aux, 1)) * 10;
-//					tempo.modo24 = 1;
-//				}
-//				break;
-//			case _DAY:
-//				tempo.day = make4(aux, 0);
-//				break;
-//			case _DATE:
-//				tempo.date = make4(aux, 1) * 10 + make4(aux, 0);
-//				break;
-//			case _MONTH:
-//				tempo.month = make4(aux, 1) * 10 + make4(aux, 0);
-//				break;
-//			case _YEAR:
-//				tempo.year = make4(aux, 1) * 10 + make4(aux, 0);
-//				break;
-//			default:
-//			}
-//		}
-//	}
-//}
-//
-//void main(void) {
-//
-//	delay_ms(15);
-//	lcd_init();
-//
-//	setMode(_MODO24);
-//	ds1307_set_date_time(04, 4, 9, 6, 11, 07, 00);
-//
-//	setup_timer_2(T2_DIV_BY_16, 255, 16);
-//	enable_interrupts(INT_TIMER2);
-////	enable_interrupts(GLOBAL);
-//
-//	while (true) {
-//
-//		switch (tempo.day) {
-//		case 0:
-//			strcpy(semana, "DOM");
-//			break;
-//		case 1:
-//			strcpy(semana, "SEG");
-//			break;
-//		case 2:
-//			strcpy(semana, "TER");
-//			break;
-//		case 3:
-//			strcpy(semana, "QUA");
-//			break;
-//		case 4:
-//			strcpy(semana, "QUI");
-//			break;
-//		case 5:
-//			strcpy(semana, "SEX");
-//			break;
-//		case 6:
-//			strcpy(semana, "SAB");
-//			break;
-//		default:
-//			strcpy(semana, "NON");
-//		}
-//
-//		if (!tempo.modo24) {
-//			if (tempo.PM)
-//				strcpy(modo, "PM");
-//			else
-//				strcpy(modo, "AM");
-//		} else {
-//			strcpy(modo, "  ");
-//		}
-//
-//		printf("\f%3s %02d/%02d/%04d", semana, tempo.date, tempo.month,
-//				tempo.year);
-//		printf("\n%2s %02d:%02d:%02d", modo, tempo.hours, tempo.minutes,
-//				tempo.seconds);
-//		delay_ms(500);
-//	}//infinit loop
-//}//this is the end, beautyfull friend, the end!
-//
-//void setMode(int mode) {
-//	BYTE seconds = 0;
-//
-//	i2c_start();
-//	i2c_write(0xD0); // WR to RTC
-//	i2c_write(0x00); // REG 0
-//	i2c_start();
-//	i2c_write(0xD1); // RD from RTC
-//	seconds = bcd2bin(i2c_read(0)); // Read current "seconds" in DS1307
-//	i2c_stop();
-//	seconds &= 0x7F;
-//
-//	delay_us(3);
-//
-//	i2c_start();
-//	i2c_write(0xD0); // WR to RTC
-//	i2c_write(0x00); // REG 0
-//	i2c_write(bin2bcd(seconds)); // Start oscillator with current "seconds value
-//	i2c_start();
-//	i2c_write(0xD0); // WR to RTC
-//	i2c_write(0x07); // Control Register
-//	i2c_write(0x10); // Disable squarewave output pin
-//	i2c_stop();
-//
-//}
-//
-//int make4(int var, int nibble) {
-//	register int retorno;
-//
-//	if (nibble)
-//		retorno = var >> 4;
-//	else
-//		retorno = var;
-//
-//	retorno &= 0x0F;
-//
-//	return retorno;
-//
-//}
-//
-//BYTE bin2bcd(BYTE binary_value) {
-//	BYTE temp;
-//	BYTE retval;
-//
-//	temp = binary_value;
-//	retval = 0;
-//
-//	while (true) {
-//		// Get the tens digit by doing multiple subtraction
-//		// of 10 from the binary value.
-//		if (temp >= 10) {
-//			temp -= 10;
-//			retval += 0x10;
-//		} else // Get the ones digit by adding the remainder.
-//		{
-//			retval += temp;
-//			break;
-//		}
-//	}
-//
-//	return (retval);
-//}
-//
-//BYTE bcd2bin(BYTE bcd_value) {
-//	BYTE temp;
-//
-//	temp = bcd_value;
-//	// Shifting upper digit right by 1 is same as multiplying by 8.
-//	temp >>= 1;
-//	// Isolate the bits for the upper digit.
-//	temp &= 0x78;
-//
-//	// Now return: (Tens * 8) + (Tens * 2) + Ones
-//
-//	return (temp + (temp >> 2) + (bcd_value & 0x0f));
-//}
-//
-//void ds1307_set_date_time(BYTE day, BYTE mth, BYTE year, BYTE dow, BYTE hr,
-//		BYTE min, BYTE sec) {
-//	sec &= 0x7F;
-//	hr &= 0x3F;
-//
-//	i2c_start();
-//	i2c_write(0xD0); // I2C write address
-//	delay_us(1);
-//	i2c_write(0x00); // Start at REG 0 - Seconds
-//	i2c_write(bin2bcd(sec)); // REG 0
-//	i2c_write(bin2bcd(min)); // REG 1
-//	i2c_write(bin2bcd(hr)); // REG 2
-//	i2c_write(bin2bcd(dow)); // REG 3
-//	i2c_write(bin2bcd(day)); // REG 4
-//	i2c_write(bin2bcd(mth)); // REG 5
-//	i2c_write(bin2bcd(year)); // REG 6
-//	//i2c_write(0x80);            // REG 7 - Disable squarewave output pin
-//	i2c_write(0x10);
-//	i2c_stop();
-//}
-//
-////int addr[7];
-////int cont = 0;
-////
-////i2c_start();
-////i2c_write(0xD1);
-////i2c_write(0x00);
-////addr[0] = i2c_read();
-////addr[1] = i2c_read();
-////addr[2] = i2c_read();
-////addr[3] = i2c_read();
-////addr[4] = i2c_read();
-////addr[5] = i2c_read();
-////addr[6] = i2c_read();
-////addr[7] = i2c_read(0);
-////i2c_stop();
-//
-////printf("\f");
-////for (cont = 0; cont < 7; ++cont) {
-////	if (cont == 5)
-////		printf("\n");
-////	printf("%x ", addr[cont]);
-////
-////}
+// Convert binary coded decimal to normal decimal numbers
+byte bcdToDec(byte val) {
+	return ((val / 16 * 10) + (val % 16));
+}
+
+// Stops the DS1307, but it has the side effect of setting seconds to 0
+// Probably only want to use this for testing
+/*void stopDs1307()
+ {
+ Wire.beginTransmission(DS1307_I2C_ADDRESS);
+ Wire.send(0);
+ Wire.send(0x80);
+ Wire.endTransmission();
+ }*/
+
+// 1) Sets the date and time on the ds1307
+// 2) Starts the clock
+// 3) Sets hour mode to 24 hour clock
+// Assumes you're passing in valid numbers
+void setDateDs1307(byte second,        // 0-59
+		byte minute,        // 0-59
+		byte hour,          // 1-23
+		byte dayOfWeek,     // 1-7
+		byte dayOfMonth,    // 1-28/29/30/31
+		byte month,         // 1-12
+		byte year)          // 0-99
+{
+	Wire.beginTransmission(DS1307_I2C_ADDRESS);
+	Wire.send(0);
+	Wire.send(decToBcd(second));    // 0 to bit 7 starts the clock
+	Wire.send(decToBcd(minute));
+	Wire.send(decToBcd(hour));      // If you want 12 hour am/pm you need to set
+									// bit 6 (also need to change readDateDs1307)
+	Wire.send(decToBcd(dayOfWeek));
+	Wire.send(decToBcd(dayOfMonth));
+	Wire.send(decToBcd(month));
+	Wire.send(decToBcd(year));
+	Wire.endTransmission();
+}
+
+// Gets the date and time from the ds1307
+void getDateDs1307(byte *second, byte *minute, byte *hour, byte *dayOfWeek,
+		byte *dayOfMonth, byte *month, byte *year) {
+	// Reset the register pointer
+	Wire.beginTransmission(DS1307_I2C_ADDRESS);
+	Wire.send(0);
+	Wire.endTransmission();
+
+	Wire.requestFrom(DS1307_I2C_ADDRESS, 7);
+
+	// A few of these need masks because certain bits are control bits
+	*second = bcdToDec(Wire.receive() & 0x7f);
+	*minute = bcdToDec(Wire.receive());
+	*hour = bcdToDec(Wire.receive() & 0x3f); // Need to change this if 12 hour am/pm
+	*dayOfWeek = bcdToDec(Wire.receive());
+	*dayOfMonth = bcdToDec(Wire.receive());
+	*month = bcdToDec(Wire.receive());
+	*year = bcdToDec(Wire.receive());
+}
+
+void setup() {
+	byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+	Wire.begin();
+	Serial.begin(9600);
+
+	// Change these values to what you want to set your clock to.
+	// You probably only want to set your clock once and then remove
+	// the setDateDs1307 call.
+	second = 45;
+	minute = 3;
+	hour = 7;
+	dayOfWeek = 5;
+	dayOfMonth = 17;
+	month = 4;
+	year = 8;
+	setDateDs1307(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
+}
+
+void loop() {
+	byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+
+	getDateDs1307(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month,
+			&year);
+	Serial.print(hour, DEC);
+	Serial.print(":");
+	Serial.print(minute, DEC);
+	Serial.print(":");
+	Serial.print(second, DEC);
+	Serial.print("  ");
+	Serial.print(month, DEC);
+	Serial.print("/");
+	Serial.print(dayOfMonth, DEC);
+	Serial.print("/");
+	Serial.print(year, DEC);
+	Serial.print("  Day_of_week:");
+	Serial.println(dayOfWeek, DEC);
+
+	delay(1000);
+}
