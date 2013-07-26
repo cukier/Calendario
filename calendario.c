@@ -1,65 +1,39 @@
-//
-// Maurice Ribble
-// 4-17-2008
-// http://www.glacialwanderer.com/hobbyrobotics
-// source: http://www.glacialwanderer.com/hobbyrobotics/?p=12
-// This code tests the DS1307 Real Time clock on the Arduino board.
-// The ds1307 works in binary coded decimal or BCD.  You can look up
-// bcd in google if you aren't familior with it.  There can output
-// a square wave, but I don't expose that in this code.  See the
-// ds1307 for it's full capabilities.
+#include <18F252.h>
 
-#include "Wire.h"
-#define DS1307_I2C_ADDRESS 0x68
+#fuses H4
+#use delay(crystal=8MHz, clock=32MHz)
+#use rs232(baud=9660, xmit=PIN_C4)
+#use i2c(master, sda=PIN_C4, scl=PIN_C3)
 
-// Convert normal decimal numbers to binary coded decimal
-byte decToBcd(byte val) {
+#define DS1307_ADD 0xD0
+
+int decToBcd(int val) {
 	return ((val / 10 * 16) + (val % 10));
 }
 
-// Convert binary coded decimal to normal decimal numbers
-byte bcdToDec(byte val) {
+int bcdToDec(int val) {
 	return ((val / 16 * 10) + (val % 16));
 }
 
-// Stops the DS1307, but it has the side effect of setting seconds to 0
-// Probably only want to use this for testing
-/*void stopDs1307()
- {
- Wire.beginTransmission(DS1307_I2C_ADDRESS);
- Wire.send(0);
- Wire.send(0x80);
- Wire.endTransmission();
- }*/
+void setDateDs1307(int second, int minute, int hour, int dayOfWeek,
+		int dayOfMonth, int month, int year) {
+	i2c_start();
+	i2c_write(DS1307_ADD);
+	i2c_write(0);
+	i2c_write(decToBcd(second));
+	i2c_write(decToBcd(minute));
+	i2c_write(decToBcd(hour));
+	i2c_write(decToBcd(dayOfWeek));
+	i2c_write(decToBcd(dayOfMonth));
+	i2c_write(decToBcd(month));
+	i2c_write(decToBcd(year));
+	i2c_stop();
 
-// 1) Sets the date and time on the ds1307
-// 2) Starts the clock
-// 3) Sets hour mode to 24 hour clock
-// Assumes you're passing in valid numbers
-void setDateDs1307(byte second,        // 0-59
-		byte minute,        // 0-59
-		byte hour,          // 1-23
-		byte dayOfWeek,     // 1-7
-		byte dayOfMonth,    // 1-28/29/30/31
-		byte month,         // 1-12
-		byte year)          // 0-99
-{
-	Wire.beginTransmission(DS1307_I2C_ADDRESS);
-	Wire.send(0);
-	Wire.send(decToBcd(second));    // 0 to bit 7 starts the clock
-	Wire.send(decToBcd(minute));
-	Wire.send(decToBcd(hour));      // If you want 12 hour am/pm you need to set
-									// bit 6 (also need to change readDateDs1307)
-	Wire.send(decToBcd(dayOfWeek));
-	Wire.send(decToBcd(dayOfMonth));
-	Wire.send(decToBcd(month));
-	Wire.send(decToBcd(year));
-	Wire.endTransmission();
 }
 
 // Gets the date and time from the ds1307
-void getDateDs1307(byte *second, byte *minute, byte *hour, byte *dayOfWeek,
-		byte *dayOfMonth, byte *month, byte *year) {
+void getDateDs1307(int *second, int *minute, int *hour, int *dayOfWeek,
+		int *dayOfMonth, int *month, int *year) {
 	// Reset the register pointer
 	Wire.beginTransmission(DS1307_I2C_ADDRESS);
 	Wire.send(0);
@@ -78,7 +52,7 @@ void getDateDs1307(byte *second, byte *minute, byte *hour, byte *dayOfWeek,
 }
 
 void setup() {
-	byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+	int second, minute, hour, dayOfWeek, dayOfMonth, month, year;
 	Wire.begin();
 	Serial.begin(9600);
 
@@ -96,7 +70,7 @@ void setup() {
 }
 
 void loop() {
-	byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+	int second, minute, hour, dayOfWeek, dayOfMonth, month, year;
 
 	getDateDs1307(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month,
 			&year);
