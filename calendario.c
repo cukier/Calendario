@@ -70,7 +70,7 @@ void ds1307_init(void) {
 	i2c_write(0xD1);      // RD from RTC
 	seconds = i2c_read(0); // Read current "seconds" in DS1307
 	i2c_stop();
-//	seconds &= 0x7F;
+	seconds &= 0x7F;
 
 	delay_us(3);
 
@@ -93,15 +93,9 @@ int main(void) {
 	 return 1;
 	 } else {
 	 printf("\fDisp. OK...");
-	 }
+	 }*/
 
-	 ds1307_init();*/
-
-	i2c_start();
-	i2c_write(0xD0);      // WR to RTC
-	i2c_write(0x00);      // REG 0
-	i2c_write(0); // Start oscillator with current "seconds value
-	i2c_stop();
+	ds1307_init();
 
 	while (TRUE) {
 		delay_ms(500);
