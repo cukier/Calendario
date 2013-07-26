@@ -1,0 +1,550 @@
+CCS PCH C Compiler, Version 4.140, 21898               26-jul-13 08:56
+
+               Filename:   E:\Eletronica\Projetos\Calendario\calendario.lst
+
+               ROM used:   1238 bytes (4%)
+                           Largest free fragment is 31530
+               RAM used:   12 (1%) at main() level
+                           37 (2%) worst case
+               Stack:     3 locations
+
+*
+0000:  GOTO   041C
+.................... #include <18F252.h> 
+.................... //////// Standard Header file for the PIC18F252 device //////////////// 
+.................... #device PIC18F252 
+.................... #list 
+....................  
+....................  
+.................... #fuses H4 
+.................... #use delay(crystal=8MHz, clock=32MHz) 
+03F4:  CLRF   FEA
+03F6:  MOVLW  14
+03F8:  MOVWF  FE9
+03FA:  MOVF   FEF,W
+03FC:  BZ    0418
+03FE:  MOVLW  0A
+0400:  MOVWF  01
+0402:  CLRF   00
+0404:  DECFSZ 00,F
+0406:  BRA    0404
+0408:  DECFSZ 01,F
+040A:  BRA    0402
+040C:  MOVLW  5F
+040E:  MOVWF  00
+0410:  DECFSZ 00,F
+0412:  BRA    0410
+0414:  DECFSZ FEF,F
+0416:  BRA    03FE
+0418:  GOTO   04CA (RETURN)
+.................... #use rs232(baud=9660, xmit=PIN_C6) 
+*
+02FC:  BCF    F94.6
+02FE:  BCF    F8B.6
+0300:  MOVLW  08
+0302:  MOVWF  01
+0304:  BRA    0306
+0306:  NOP   
+0308:  BSF    01.7
+030A:  BRA    0328
+030C:  BCF    01.7
+030E:  RRCF   19,F
+0310:  BTFSC  FD8.0
+0312:  BSF    F8B.6
+0314:  BTFSS  FD8.0
+0316:  BCF    F8B.6
+0318:  BSF    01.6
+031A:  BRA    0328
+031C:  BCF    01.6
+031E:  DECFSZ 01,F
+0320:  BRA    030E
+0322:  BRA    0324
+0324:  NOP   
+0326:  BSF    F8B.6
+0328:  MOVLW  01
+032A:  MOVWF  00
+032C:  CLRF   FE9
+032E:  DECFSZ FE9,F
+0330:  BRA    032E
+0332:  DECFSZ 00,F
+0334:  BRA    032C
+0336:  MOVLW  0C
+0338:  MOVWF  FE9
+033A:  DECFSZ FE9,F
+033C:  BRA    033A
+033E:  BRA    0340
+0340:  BTFSC  01.7
+0342:  BRA    030C
+0344:  BTFSC  01.6
+0346:  BRA    031C
+0348:  RETURN 0
+.................... #use i2c(master, sda=PIN_C4, scl=PIN_C3) 
+*
+0004:  MOVLW  08
+0006:  MOVWF  01
+0008:  MOVLW  0A
+000A:  MOVWF  00
+000C:  DECFSZ 00,F
+000E:  BRA    000C
+0010:  BCF    F8B.3
+0012:  BCF    F94.3
+0014:  MOVLW  0B
+0016:  MOVWF  00
+0018:  DECFSZ 00,F
+001A:  BRA    0018
+001C:  RLCF   21,F
+001E:  BCF    F8B.4
+0020:  BTFSC  FD8.0
+0022:  BSF    F94.4
+0024:  BTFSS  FD8.0
+0026:  BCF    F94.4
+0028:  BSF    F94.3
+002A:  BTFSS  F82.3
+002C:  BRA    002A
+002E:  DECFSZ 01,F
+0030:  BRA    0008
+0032:  MOVLW  0A
+0034:  MOVWF  00
+0036:  DECFSZ 00,F
+0038:  BRA    0036
+003A:  BCF    F8B.3
+003C:  BCF    F94.3
+003E:  NOP   
+0040:  BSF    F94.4
+0042:  MOVLW  0B
+0044:  MOVWF  00
+0046:  DECFSZ 00,F
+0048:  BRA    0046
+004A:  MOVLW  0B
+004C:  MOVWF  00
+004E:  DECFSZ 00,F
+0050:  BRA    004E
+0052:  BSF    F94.3
+0054:  BTFSS  F82.3
+0056:  BRA    0054
+0058:  CLRF   01
+005A:  MOVLW  0B
+005C:  MOVWF  00
+005E:  DECFSZ 00,F
+0060:  BRA    005E
+0062:  BTFSC  F82.4
+0064:  BSF    01.0
+0066:  BCF    F8B.3
+0068:  BCF    F94.3
+006A:  BCF    F8B.4
+006C:  BCF    F94.4
+006E:  RETURN 0
+*
+017E:  MOVLW  08
+0180:  MOVWF  24
+0182:  MOVFF  00,25
+0186:  BSF    F94.4
+0188:  MOVLW  0B
+018A:  MOVWF  00
+018C:  DECFSZ 00,F
+018E:  BRA    018C
+0190:  BSF    F94.3
+0192:  BTFSS  F82.3
+0194:  BRA    0192
+0196:  BTFSC  F82.4
+0198:  BSF    FD8.0
+019A:  BTFSS  F82.4
+019C:  BCF    FD8.0
+019E:  RLCF   01,F
+01A0:  MOVLW  0A
+01A2:  MOVWF  00
+01A4:  DECFSZ 00,F
+01A6:  BRA    01A4
+01A8:  BCF    F94.3
+01AA:  BCF    F8B.3
+01AC:  DECFSZ 24,F
+01AE:  BRA    0186
+01B0:  BSF    F94.4
+01B2:  MOVLW  0B
+01B4:  MOVWF  00
+01B6:  DECFSZ 00,F
+01B8:  BRA    01B6
+01BA:  BCF    F8B.4
+01BC:  MOVF   25,W
+01BE:  BTFSS  FD8.2
+01C0:  BCF    F94.4
+01C2:  NOP   
+01C4:  BSF    F94.3
+01C6:  BTFSS  F82.3
+01C8:  BRA    01C6
+01CA:  MOVLW  0A
+01CC:  MOVWF  00
+01CE:  DECFSZ 00,F
+01D0:  BRA    01CE
+01D2:  BCF    F8B.3
+01D4:  BCF    F94.3
+01D6:  MOVLW  0B
+01D8:  MOVWF  00
+01DA:  DECFSZ 00,F
+01DC:  BRA    01DA
+01DE:  BCF    F8B.4
+01E0:  BCF    F94.4
+01E2:  RETURN 0
+....................  
+.................... #define DS1307_ADD 0xD0 
+....................  
+.................... int decToBcd(int val) { 
+.................... 	return ((val / 10 * 16) + (val % 10)); 
+*
+0098:  MOVFF  1A,1C
+009C:  MOVLW  0A
+009E:  MOVWF  1D
+00A0:  RCALL  0070
+00A2:  MOVF   01,W
+00A4:  MULLW  10
+00A6:  MOVFF  FF3,1B
+00AA:  MOVFF  1A,1C
+00AE:  MOVLW  0A
+00B0:  MOVWF  1D
+00B2:  RCALL  0070
+00B4:  MOVF   00,W
+00B6:  ADDWF  1B,W
+00B8:  MOVWF  01
+.................... } 
+00BA:  RETURN 0
+....................  
+.................... int bcdToDec(int val) { 
+.................... 	return ((val / 16 * 10) + (val % 16)); 
+.................... } 
+....................  
+.................... void setDateDs1307(int second, int minute, int hour, int dayOfWeek, 
+.................... 		int dayOfMonth, int month, int year) { 
+.................... 	i2c_start(); 
+00BC:  BSF    F94.4
+00BE:  MOVLW  0A
+00C0:  MOVWF  00
+00C2:  DECFSZ 00,F
+00C4:  BRA    00C2
+00C6:  BSF    F94.3
+00C8:  MOVLW  0B
+00CA:  MOVWF  00
+00CC:  DECFSZ 00,F
+00CE:  BRA    00CC
+00D0:  BCF    F8B.4
+00D2:  BCF    F94.4
+00D4:  MOVLW  0A
+00D6:  MOVWF  00
+00D8:  DECFSZ 00,F
+00DA:  BRA    00D8
+00DC:  BCF    F8B.3
+00DE:  BCF    F94.3
+.................... 	i2c_write(DS1307_ADD); 
+00E0:  MOVLW  D0
+00E2:  MOVWF  21
+00E4:  RCALL  0004
+.................... 	i2c_write(0); 
+00E6:  CLRF   21
+00E8:  RCALL  0004
+.................... 	i2c_write(decToBcd(second)); 
+00EA:  MOVFF  13,1A
+00EE:  RCALL  0098
+00F0:  MOVFF  01,1A
+00F4:  MOVFF  01,21
+00F8:  RCALL  0004
+.................... 	i2c_write(decToBcd(minute)); 
+00FA:  MOVFF  14,1A
+00FE:  RCALL  0098
+0100:  MOVFF  01,1A
+0104:  MOVFF  01,21
+0108:  RCALL  0004
+.................... 	i2c_write(decToBcd(hour)); 
+010A:  MOVFF  15,1A
+010E:  RCALL  0098
+0110:  MOVFF  01,1A
+0114:  MOVFF  01,21
+0118:  RCALL  0004
+.................... 	i2c_write(decToBcd(dayOfWeek)); 
+011A:  MOVFF  16,1A
+011E:  RCALL  0098
+0120:  MOVFF  01,1A
+0124:  MOVFF  01,21
+0128:  RCALL  0004
+.................... 	i2c_write(decToBcd(dayOfMonth)); 
+012A:  MOVFF  17,1A
+012E:  RCALL  0098
+0130:  MOVFF  01,1A
+0134:  MOVFF  01,21
+0138:  RCALL  0004
+.................... 	i2c_write(decToBcd(month)); 
+013A:  MOVFF  18,1A
+013E:  RCALL  0098
+0140:  MOVFF  01,1A
+0144:  MOVFF  01,21
+0148:  RCALL  0004
+.................... 	i2c_write(decToBcd(year)); 
+014A:  MOVFF  19,1A
+014E:  RCALL  0098
+0150:  MOVFF  01,1A
+0154:  MOVFF  01,21
+0158:  RCALL  0004
+.................... 	i2c_stop(); 
+015A:  BCF    F94.4
+015C:  NOP   
+015E:  BSF    F94.3
+0160:  BTFSS  F82.3
+0162:  BRA    0160
+0164:  MOVLW  0A
+0166:  MOVWF  00
+0168:  DECFSZ 00,F
+016A:  BRA    0168
+016C:  BRA    016E
+016E:  NOP   
+0170:  BSF    F94.4
+0172:  MOVLW  0A
+0174:  MOVWF  00
+0176:  DECFSZ 00,F
+0178:  BRA    0176
+....................  
+.................... } 
+017A:  GOTO   046A (RETURN)
+....................  
+.................... void getDateDs1307(int *second, int *minute, int *hour, int *dayOfWeek, 
+.................... 		int *dayOfMonth, int *month, int *year) { 
+.................... 	i2c_start(); 
+*
+01E4:  BSF    F94.4
+01E6:  MOVLW  0A
+01E8:  MOVWF  00
+01EA:  DECFSZ 00,F
+01EC:  BRA    01EA
+01EE:  BSF    F94.3
+01F0:  MOVLW  0B
+01F2:  MOVWF  00
+01F4:  DECFSZ 00,F
+01F6:  BRA    01F4
+01F8:  BCF    F8B.4
+01FA:  BCF    F94.4
+01FC:  MOVLW  0A
+01FE:  MOVWF  00
+0200:  DECFSZ 00,F
+0202:  BRA    0200
+0204:  BCF    F8B.3
+0206:  BCF    F94.3
+.................... 	i2c_write(DS1307_ADD); 
+0208:  MOVLW  D0
+020A:  MOVWF  21
+020C:  RCALL  0004
+.................... 	i2c_write(0); 
+020E:  CLRF   21
+0210:  RCALL  0004
+.................... 	i2c_start(); 
+0212:  BSF    F94.4
+0214:  MOVLW  0A
+0216:  MOVWF  00
+0218:  DECFSZ 00,F
+021A:  BRA    0218
+021C:  BSF    F94.3
+021E:  MOVLW  0B
+0220:  MOVWF  00
+0222:  DECFSZ 00,F
+0224:  BRA    0222
+0226:  BTFSS  F82.3
+0228:  BRA    0226
+022A:  BCF    F8B.4
+022C:  BCF    F94.4
+022E:  MOVLW  0A
+0230:  MOVWF  00
+0232:  DECFSZ 00,F
+0234:  BRA    0232
+0236:  BCF    F8B.3
+0238:  BCF    F94.3
+.................... 	i2c_write(DS1307_ADD + 1); 
+023A:  MOVLW  D1
+023C:  MOVWF  21
+023E:  RCALL  0004
+.................... 	*second = i2c_read(); 
+0240:  MOVFF  14,03
+0244:  MOVFF  13,FE9
+0248:  MOVFF  14,FEA
+024C:  MOVLW  01
+024E:  MOVWF  00
+0250:  RCALL  017E
+0252:  MOVFF  01,FEF
+.................... 	*minute = i2c_read(); 
+0256:  MOVFF  16,03
+025A:  MOVFF  15,FE9
+025E:  MOVFF  16,FEA
+0262:  MOVLW  01
+0264:  MOVWF  00
+0266:  RCALL  017E
+0268:  MOVFF  01,FEF
+.................... 	*hour = i2c_read(); 
+026C:  MOVFF  18,03
+0270:  MOVFF  17,FE9
+0274:  MOVFF  18,FEA
+0278:  MOVLW  01
+027A:  MOVWF  00
+027C:  RCALL  017E
+027E:  MOVFF  01,FEF
+.................... 	*dayOfWeek = i2c_read(); 
+0282:  MOVFF  1A,03
+0286:  MOVFF  19,FE9
+028A:  MOVFF  1A,FEA
+028E:  MOVLW  01
+0290:  MOVWF  00
+0292:  RCALL  017E
+0294:  MOVFF  01,FEF
+.................... 	*dayOfMonth = i2c_read(); 
+0298:  MOVFF  1C,03
+029C:  MOVFF  1B,FE9
+02A0:  MOVFF  1C,FEA
+02A4:  MOVLW  01
+02A6:  MOVWF  00
+02A8:  RCALL  017E
+02AA:  MOVFF  01,FEF
+.................... 	*month = i2c_read(); 
+02AE:  MOVFF  1E,03
+02B2:  MOVFF  1D,FE9
+02B6:  MOVFF  1E,FEA
+02BA:  MOVLW  01
+02BC:  MOVWF  00
+02BE:  RCALL  017E
+02C0:  MOVFF  01,FEF
+.................... 	*year = i2c_read(0); 
+02C4:  MOVFF  20,03
+02C8:  MOVFF  1F,FE9
+02CC:  MOVFF  20,FEA
+02D0:  CLRF   00
+02D2:  RCALL  017E
+02D4:  MOVFF  01,FEF
+.................... 	i2c_stop(); 
+02D8:  BCF    F94.4
+02DA:  NOP   
+02DC:  BSF    F94.3
+02DE:  BTFSS  F82.3
+02E0:  BRA    02DE
+02E2:  MOVLW  0A
+02E4:  MOVWF  00
+02E6:  DECFSZ 00,F
+02E8:  BRA    02E6
+02EA:  BRA    02EC
+02EC:  NOP   
+02EE:  BSF    F94.4
+02F0:  MOVLW  0A
+02F2:  MOVWF  00
+02F4:  DECFSZ 00,F
+02F6:  BRA    02F4
+.................... } 
+02F8:  GOTO   0496 (RETURN)
+....................  
+.................... int main(void) { 
+*
+041C:  CLRF   FF8
+041E:  BCF    FD0.7
+0420:  CLRF   FEA
+0422:  CLRF   FE9
+0424:  BCF    F94.6
+0426:  BSF    F8B.6
+0428:  BSF    FC1.0
+042A:  BSF    FC1.1
+042C:  BSF    FC1.2
+042E:  BCF    FC1.3
+.................... 	int second, minute, hour, dayOfWeek, dayOfMonth, month, year; 
+....................  
+.................... 	second = 45; 
+0430:  MOVLW  2D
+0432:  MOVWF  05
+.................... 	minute = 3; 
+0434:  MOVLW  03
+0436:  MOVWF  06
+.................... 	hour = 7; 
+0438:  MOVLW  07
+043A:  MOVWF  07
+.................... 	dayOfWeek = 5; 
+043C:  MOVLW  05
+043E:  MOVWF  08
+.................... 	dayOfMonth = 17; 
+0440:  MOVLW  11
+0442:  MOVWF  09
+.................... 	month = 4; 
+0444:  MOVLW  04
+0446:  MOVWF  0A
+.................... 	year = 8; 
+0448:  MOVLW  08
+044A:  MOVWF  0B
+.................... 	setDateDs1307(second, minute, hour, dayOfWeek, dayOfMonth, month, year); 
+044C:  MOVFF  05,13
+0450:  MOVFF  06,14
+0454:  MOVFF  07,15
+0458:  MOVFF  08,16
+045C:  MOVFF  09,17
+0460:  MOVFF  0A,18
+0464:  MOVFF  0B,19
+0468:  BRA    00BC
+....................  
+.................... 	while (TRUE) { 
+.................... 		int second, minute, hour, dayOfWeek, dayOfMonth, month, year; 
+....................  
+.................... 		getDateDs1307(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, 
+.................... 				&year); 
+046A:  CLRF   14
+046C:  MOVLW  0C
+046E:  MOVWF  13
+0470:  CLRF   16
+0472:  MOVLW  0D
+0474:  MOVWF  15
+0476:  CLRF   18
+0478:  MOVLW  0E
+047A:  MOVWF  17
+047C:  CLRF   1A
+047E:  MOVLW  0F
+0480:  MOVWF  19
+0482:  CLRF   1C
+0484:  MOVLW  10
+0486:  MOVWF  1B
+0488:  CLRF   1E
+048A:  MOVLW  11
+048C:  MOVWF  1D
+048E:  CLRF   20
+0490:  MOVLW  12
+0492:  MOVWF  1F
+0494:  BRA    01E4
+.................... 		printf("%2d:%2d:%2d", hour, minute, second); 
+0496:  MOVFF  0E,13
+049A:  MOVLW  11
+049C:  MOVWF  14
+049E:  RCALL  034A
+04A0:  MOVLW  3A
+04A2:  MOVWF  19
+04A4:  RCALL  02FC
+04A6:  MOVFF  0D,13
+04AA:  MOVLW  11
+04AC:  MOVWF  14
+04AE:  RCALL  034A
+04B0:  MOVLW  3A
+04B2:  MOVWF  19
+04B4:  RCALL  02FC
+04B6:  MOVFF  0C,13
+04BA:  MOVLW  11
+04BC:  MOVWF  14
+04BE:  RCALL  034A
+....................  
+.................... 		delay_ms(1000); 
+04C0:  MOVLW  04
+04C2:  MOVWF  13
+04C4:  MOVLW  FA
+04C6:  MOVWF  14
+04C8:  BRA    03F4
+04CA:  DECFSZ 13,F
+04CC:  BRA    04C4
+.................... 	} 
+04CE:  BRA    046A
+.................... 	return 0; 
+04D0:  MOVLW  00
+04D2:  MOVWF  01
+.................... } 
+04D4:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 2600   H4 NOOSCSEN
+   Word  2: 0E0E   PUT BROWNOUT BORV20 NOWDT WDT128
+   Word  3: 0100   CCP2C1
+   Word  4: 0081   STVREN NOLVP NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB
