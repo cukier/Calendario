@@ -19,8 +19,12 @@
 #define ctlr_addr	0x07
 #define debounce 	100
 
+enum dow {
+	dom, seg, ter, qua, qui, sex, sab
+};
+
 struct cal {
-	short am_pm;
+	short am_pm, _12h;
 	int segundos, minutos, horas, dow, dia, mes, ano;
 };
 
@@ -74,10 +78,11 @@ int toSec(int in) {
 	return 10 * msb + lsb;
 }
 
-int toHour(int in, short *AM_PM) {
+int toHour(int in, short *AM_PM, short *formato) {
 	int msb, lsb;
 
-	if (bit_test(in, 7)) {
+	*formato = bit_test(in, 6);
+	if (*formato) {
 		msb = (in & 0x10) >> 4;
 		*AM_PM = bit_test(in, 5);
 	} else {
@@ -123,8 +128,8 @@ int getMin(void) {
 	return toSec(getReg(min_addr));
 }
 
-int getHour(short *AM_PM) {
-	return toHour(getReg(hour_addr), *AM_PM);
+int getHour(short *AM_PM, short *formato) {
+	return toHour(getReg(hour_addr), *AM_PM, *formato);
 }
 
 int getDayOfWeek(void) {
@@ -150,6 +155,8 @@ void initDS1307(void) {
 }
 
 void getDS1307(struct cal *calendario) {
+	int aux;
+
 	i2c_start();
 	i2c_write(DS1307);
 	i2c_write(sec_addr);
@@ -157,7 +164,8 @@ void getDS1307(struct cal *calendario) {
 	i2c_write(DS1307 + 1);
 	calendario->segundos = toSec(i2c_read());
 	calendario->minutos = toSec(i2c_read());
-	calendario->horas = toHour(i2c_read(), calendario->am_pm);
+	calendario->horas = toHour(i2c_read(), calendario->am_pm, calendario->_12h);
+	calendario->horas = bcdToDec(i2c_read() & 0x63);
 	calendario->dow = i2c_read() & 0x07;
 	calendario->dia = toDate(i2c_read());
 	calendario->mes = toMonth(i2c_read());

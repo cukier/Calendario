@@ -19,18 +19,61 @@ struct cal calendario;
 
 int main(void) {
 
-	int aux;
+	int formato[4], AM_PM[3], diaSemana[4];
 
 	initDS1307();
 	lcd_init();
 	delay_ms(100);
-//	getDS1307(&calendario);
 
 	while (TRUE) {
+
 		delay_ms(500);
 		getDS1307(&calendario);
-		printf(lcd, "\f        %02d:%02d:%02d\n        %02d/%02d/%02d",
-				calendario.horas, calendario.minutos, calendario.segundos,
-				calendario.dia, calendario.mes, calendario.ano);
+
+		if (calendario._12h) {
+			strcpy(formato, "12h");
+			if (calendario.am_pm)
+				strcpy(AM_PM, "AM");
+			else
+				strcpy(AM_PM, "PM");
+		} else {
+			strcpy(formato, "24h");
+			strcpy(AM_PM, "  ");
+		}
+		AM_PM[2] = '\0';
+		formato[3] = '\0';
+
+		switch (calendario.dow - 1) {
+		case dom:
+			strcpy(diaSemana, "DOM");
+			break;
+		case seg:
+			strcpy(diaSemana, "SEG");
+			break;
+		case ter:
+			strcpy(diaSemana, "TER");
+			break;
+		case qua:
+			strcpy(diaSemana, "QUA");
+			break;
+		case qui:
+			strcpy(diaSemana, "QUI");
+			break;
+		case sex:
+			strcpy(diaSemana, "SEX");
+			break;
+		case sab:
+			strcpy(diaSemana, "SAB");
+			break;
+		default:
+			strcpy(diaSemana, "ERR");
+			break;
+		}
+		diaSemana[3] = '\0';
+
+		printf(lcd, "\f%s %s  %02d:%02d:%02d", formato, AM_PM, calendario.horas,
+				calendario.minutos, calendario.segundos);
+		printf(lcd, "\n%s     %02d/%02d/%02d", diaSemana, calendario.dia,
+				calendario.mes, calendario.ano);
 	}
 }
