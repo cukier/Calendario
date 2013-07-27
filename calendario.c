@@ -8,7 +8,7 @@
 #include<18F452.h>
 
 #fuses H4
-#use delay (crystal=10MHz, clock=40MHz)fdasfdfd
+#use delay (crystal=10MHz, clock=40MHz)
 #use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7)
 #use i2c(master, sda=PIN_C4, scl=PIN_C3, fast=50000)
 
@@ -23,7 +23,7 @@ int main(void) {
 
 	initDS1307();
 	lcd_init();
-	delay_ms(100);fjopedwafjdas~fjkd
+	delay_ms(100);
 //	getDS1307(&calendario);
 
 	while (TRUE) {
