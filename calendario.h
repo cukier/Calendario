@@ -24,6 +24,14 @@ struct cal {
 	int segundos, minutos, horas, dow, dia, mes, ano;
 };
 
+int decToBcd(int val) {
+	return ((val / 10 * 16) + (val % 10));
+}
+
+int bcdToDec(int val) {
+	return ((val / 16 * 10) + (val % 16));
+}
+
 int getReg(int addr) {
 	int leitura;
 
