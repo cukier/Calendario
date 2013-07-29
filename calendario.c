@@ -19,8 +19,7 @@ struct cal calendario;
 
 int main(void) {
 
-	int formato[4], AM_PM[3], diaSemana[4];
-	short ack = 0;
+	int formato[4], AM_PM[3], diaSemana[4], aux;
 
 	lcd_init();
 	delay_ms(100);
@@ -45,7 +44,7 @@ int main(void) {
 			}
 		}
 
-		delay_ms(500);
+		delay_ms(100);
 		getDS1307(&calendario);
 
 		if (calendario._12h) {
@@ -89,9 +88,12 @@ int main(void) {
 		}
 		diaSemana[3] = '\0';
 
-		printf(lcd, "\f%s %s  %02d:%02d:%02d", formato, AM_PM, calendario.horas,
-				calendario.minutos, calendario.segundos);
-		printf(lcd, "\n%s     %02d/%02d/%02d", diaSemana, calendario.dia,
-				calendario.mes, calendario.ano);
+		if (aux != calendario.segundos) {
+			aux = calendario.segundos;
+			printf(lcd, "\f%s %s  %02d:%02d:%02d", formato, AM_PM,
+					calendario.horas, calendario.minutos, calendario.segundos);
+			printf(lcd, "\n%s     %02d/%02d/%02d", diaSemana, calendario.dia,
+					calendario.mes, calendario.ano);
+		}
 	} //infinite loop
 } //main

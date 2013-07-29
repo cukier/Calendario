@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""4.140""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""29-jul-13""
-D G "__TIME__" 0 0 ""14:46:39"" "/*"
+D G "__TIME__" 0 0 ""14:51:49"" "/*"
 C G "" 0 2 1 "*"
 C G "" 0 4 1 "*"
 C G "" 0 5 1 "*"
@@ -337,7 +337,7 @@ F G "MAIN" 0 20 "int8()"
 V L "formato" 0 22 "int8[4]"
 V L "am_pm" 0 22 "int8[3]"
 V L "diaSemana" 0 22 "int8[4]"
-V L "ack" 0 23 "int1"
+V L "aux" 0 22 "int8"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0

@@ -250,7 +250,7 @@ void setDS1307(struct cal *calen) {
 	delay_ms(1);
 
 	writeReg(hour_addr,
-			((int) calen->_12h << 5) | ((int) calen->am_pm << 5)
+			((int) calen->_12h << 6) | ((int) calen->am_pm << 5)
 					| toBcd(calen->horas & 0x3F));
 	delay_ms(1);
 
