@@ -148,10 +148,18 @@ int getYear(void) {
 	return getReg(toYear(year_addr));
 }
 
-void initDS1307(void) {
+short initDS1307(void) {
 	int aux;
+	short ack = 1;
 
-	writeReg(sec_addr, getReg(sec_addr) & 0x7F);
+	i2c_start();
+	ack = i2c_write(DS1307);
+	i2c_stop();
+
+	if (!ack)
+		writeReg(sec_addr, getReg(sec_addr) & 0x7F);
+
+	return ack;
 }
 
 void getDS1307(struct cal *calendario) {
@@ -173,13 +181,18 @@ void getDS1307(struct cal *calendario) {
 	i2c_stop();
 }
 
-void setDS1307(int seg, int min, int hor, int dow, int dia, int mes, int ano,
-		short am_pm) {
+void setDS1307(struct cal *calen) {
 	i2c_start();
 	i2c_write(DS1307);
 	i2c_write(sec_addr);
-	i2c_write(seg);
-	i2c_write(min);
+	i2c_write(calen->segundos);
+	i2c_write(calen->horas);
+	i2c_write(calen->dow);
+	i2c_write(calen->dia);
+	i2c_write(calen->mes);
+	i2c_write(calen->ano);
+	i2c_write(0);
+	i2c_stop();
 }
 
 #endif /* CALENDARIO_H_ */

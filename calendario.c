@@ -21,11 +21,28 @@ int main(void) {
 
 	int formato[4], AM_PM[3], diaSemana[4];
 
-	initDS1307();
 	lcd_init();
 	delay_ms(100);
+	if (initDS1307()) {
+		printf("Problema");
+	}
 
 	while (TRUE) {
+
+		if (!input(PIN_B0)) {
+			delay_ms(100);
+			if (!input(PIN_B0)) {
+				calendario._12h = 0;
+				calendario.am_pm = 0;
+				calendario.ano = 13;
+				calendario.dia = 29;
+				calendario.dow = seg;
+				calendario.horas = 07;
+				calendario.minutos = 26;
+				calendario.segundos = 0;
+				setDS1307(&calendario);
+			}
+		}
 
 		delay_ms(500);
 		getDS1307(&calendario);
