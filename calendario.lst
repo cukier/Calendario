@@ -1,15 +1,15 @@
-CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 14:51
+CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 16:22
 
                Filename:   E:\Eletronica\Projetos\Calendario\calendario.lst
 
-               ROM used:   3232 bytes (10%)
-                           Largest free fragment is 29536
+               ROM used:   3238 bytes (10%)
+                           Largest free fragment is 29530
                RAM used:   26 (2%) at main() level
                            46 (3%) worst case
                Stack:     5 locations
 
 *
-0000:  GOTO   0A0A
+0000:  GOTO   0A10
 .................... ///* 
 .................... // * calendario.c 
 .................... // * 
@@ -65,110 +65,110 @@ CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 14:51
 .................... //#use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7) 
 .................... #use i2c(master, sda=PIN_C4, scl=PIN_C3, fast=50000) 
 *
-0244:  MOVLW  08
-0246:  MOVWF  01
-0248:  MOVLW  1E
-024A:  MOVWF  00
-024C:  DECFSZ 00,F
-024E:  BRA    024C
-0250:  BCF    F8B.3
-0252:  BCF    F94.3
-0254:  MOVLW  1F
-0256:  MOVWF  00
-0258:  DECFSZ 00,F
-025A:  BRA    0258
-025C:  RLCF   24,F
-025E:  BCF    F8B.4
-0260:  BTFSC  FD8.0
-0262:  BSF    F94.4
-0264:  BTFSS  FD8.0
-0266:  BCF    F94.4
-0268:  BSF    F94.3
-026A:  BTFSS  F82.3
-026C:  BRA    026A
-026E:  DECFSZ 01,F
-0270:  BRA    0248
-0272:  MOVLW  1E
-0274:  MOVWF  00
-0276:  DECFSZ 00,F
-0278:  BRA    0276
-027A:  BCF    F8B.3
-027C:  BCF    F94.3
-027E:  NOP   
-0280:  BSF    F94.4
-0282:  MOVLW  1F
-0284:  MOVWF  00
-0286:  DECFSZ 00,F
-0288:  BRA    0286
-028A:  MOVLW  1F
-028C:  MOVWF  00
-028E:  DECFSZ 00,F
-0290:  BRA    028E
-0292:  BSF    F94.3
-0294:  BTFSS  F82.3
-0296:  BRA    0294
-0298:  CLRF   01
-029A:  MOVLW  1F
-029C:  MOVWF  00
-029E:  DECFSZ 00,F
-02A0:  BRA    029E
-02A2:  BTFSC  F82.4
-02A4:  BSF    01.0
-02A6:  BCF    F8B.3
-02A8:  BCF    F94.3
-02AA:  BCF    F8B.4
-02AC:  BCF    F94.4
-02AE:  RETURN 0
-02B0:  MOVLW  08
-02B2:  MOVWF  25
-02B4:  MOVFF  00,26
-02B8:  BSF    F94.4
-02BA:  MOVLW  1F
-02BC:  MOVWF  00
-02BE:  DECFSZ 00,F
-02C0:  BRA    02BE
-02C2:  BSF    F94.3
-02C4:  BTFSS  F82.3
-02C6:  BRA    02C4
-02C8:  BTFSC  F82.4
-02CA:  BSF    FD8.0
-02CC:  BTFSS  F82.4
-02CE:  BCF    FD8.0
-02D0:  RLCF   01,F
-02D2:  MOVLW  1E
-02D4:  MOVWF  00
-02D6:  DECFSZ 00,F
-02D8:  BRA    02D6
-02DA:  BCF    F94.3
-02DC:  BCF    F8B.3
-02DE:  DECFSZ 25,F
-02E0:  BRA    02B8
-02E2:  BSF    F94.4
-02E4:  MOVLW  1F
-02E6:  MOVWF  00
-02E8:  DECFSZ 00,F
-02EA:  BRA    02E8
-02EC:  BCF    F8B.4
-02EE:  MOVF   26,W
-02F0:  BTFSS  FD8.2
-02F2:  BCF    F94.4
-02F4:  NOP   
-02F6:  BSF    F94.3
-02F8:  BTFSS  F82.3
-02FA:  BRA    02F8
-02FC:  MOVLW  1E
-02FE:  MOVWF  00
-0300:  DECFSZ 00,F
-0302:  BRA    0300
-0304:  BCF    F8B.3
-0306:  BCF    F94.3
-0308:  MOVLW  1F
-030A:  MOVWF  00
-030C:  DECFSZ 00,F
-030E:  BRA    030C
-0310:  BCF    F8B.4
-0312:  BCF    F94.4
-0314:  GOTO   037A (RETURN)
+0248:  MOVLW  08
+024A:  MOVWF  01
+024C:  MOVLW  1E
+024E:  MOVWF  00
+0250:  DECFSZ 00,F
+0252:  BRA    0250
+0254:  BCF    F8B.3
+0256:  BCF    F94.3
+0258:  MOVLW  1F
+025A:  MOVWF  00
+025C:  DECFSZ 00,F
+025E:  BRA    025C
+0260:  RLCF   24,F
+0262:  BCF    F8B.4
+0264:  BTFSC  FD8.0
+0266:  BSF    F94.4
+0268:  BTFSS  FD8.0
+026A:  BCF    F94.4
+026C:  BSF    F94.3
+026E:  BTFSS  F82.3
+0270:  BRA    026E
+0272:  DECFSZ 01,F
+0274:  BRA    024C
+0276:  MOVLW  1E
+0278:  MOVWF  00
+027A:  DECFSZ 00,F
+027C:  BRA    027A
+027E:  BCF    F8B.3
+0280:  BCF    F94.3
+0282:  NOP   
+0284:  BSF    F94.4
+0286:  MOVLW  1F
+0288:  MOVWF  00
+028A:  DECFSZ 00,F
+028C:  BRA    028A
+028E:  MOVLW  1F
+0290:  MOVWF  00
+0292:  DECFSZ 00,F
+0294:  BRA    0292
+0296:  BSF    F94.3
+0298:  BTFSS  F82.3
+029A:  BRA    0298
+029C:  CLRF   01
+029E:  MOVLW  1F
+02A0:  MOVWF  00
+02A2:  DECFSZ 00,F
+02A4:  BRA    02A2
+02A6:  BTFSC  F82.4
+02A8:  BSF    01.0
+02AA:  BCF    F8B.3
+02AC:  BCF    F94.3
+02AE:  BCF    F8B.4
+02B0:  BCF    F94.4
+02B2:  RETURN 0
+02B4:  MOVLW  08
+02B6:  MOVWF  25
+02B8:  MOVFF  00,26
+02BC:  BSF    F94.4
+02BE:  MOVLW  1F
+02C0:  MOVWF  00
+02C2:  DECFSZ 00,F
+02C4:  BRA    02C2
+02C6:  BSF    F94.3
+02C8:  BTFSS  F82.3
+02CA:  BRA    02C8
+02CC:  BTFSC  F82.4
+02CE:  BSF    FD8.0
+02D0:  BTFSS  F82.4
+02D2:  BCF    FD8.0
+02D4:  RLCF   01,F
+02D6:  MOVLW  1E
+02D8:  MOVWF  00
+02DA:  DECFSZ 00,F
+02DC:  BRA    02DA
+02DE:  BCF    F94.3
+02E0:  BCF    F8B.3
+02E2:  DECFSZ 25,F
+02E4:  BRA    02BC
+02E6:  BSF    F94.4
+02E8:  MOVLW  1F
+02EA:  MOVWF  00
+02EC:  DECFSZ 00,F
+02EE:  BRA    02EC
+02F0:  BCF    F8B.4
+02F2:  MOVF   26,W
+02F4:  BTFSS  FD8.2
+02F6:  BCF    F94.4
+02F8:  NOP   
+02FA:  BSF    F94.3
+02FC:  BTFSS  F82.3
+02FE:  BRA    02FC
+0300:  MOVLW  1E
+0302:  MOVWF  00
+0304:  DECFSZ 00,F
+0306:  BRA    0304
+0308:  BCF    F8B.3
+030A:  BCF    F94.3
+030C:  MOVLW  1F
+030E:  MOVWF  00
+0310:  DECFSZ 00,F
+0312:  BRA    0310
+0314:  BCF    F8B.4
+0316:  BCF    F94.4
+0318:  GOTO   037E (RETURN)
 ....................  
 .................... #include"calendario.h" 
 .................... /* 
@@ -213,132 +213,132 @@ CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 14:51
 .................... 	int leitura; 
 ....................  
 .................... 	i2c_start(); 
-0318:  BSF    F94.4
-031A:  MOVLW  1E
-031C:  MOVWF  00
-031E:  DECFSZ 00,F
-0320:  BRA    031E
-0322:  BSF    F94.3
-0324:  MOVLW  1F
-0326:  MOVWF  00
-0328:  DECFSZ 00,F
-032A:  BRA    0328
-032C:  BCF    F8B.4
-032E:  BCF    F94.4
-0330:  MOVLW  1E
-0332:  MOVWF  00
-0334:  DECFSZ 00,F
-0336:  BRA    0334
-0338:  BCF    F8B.3
-033A:  BCF    F94.3
+031C:  BSF    F94.4
+031E:  MOVLW  1E
+0320:  MOVWF  00
+0322:  DECFSZ 00,F
+0324:  BRA    0322
+0326:  BSF    F94.3
+0328:  MOVLW  1F
+032A:  MOVWF  00
+032C:  DECFSZ 00,F
+032E:  BRA    032C
+0330:  BCF    F8B.4
+0332:  BCF    F94.4
+0334:  MOVLW  1E
+0336:  MOVWF  00
+0338:  DECFSZ 00,F
+033A:  BRA    0338
+033C:  BCF    F8B.3
+033E:  BCF    F94.3
 .................... 	i2c_write(DS1307); 
-033C:  MOVLW  D0
-033E:  MOVWF  24
-0340:  RCALL  0244
+0340:  MOVLW  D0
+0342:  MOVWF  24
+0344:  RCALL  0248
 .................... 	i2c_write(addr); 
-0342:  MOVFF  22,24
-0346:  RCALL  0244
+0346:  MOVFF  22,24
+034A:  RCALL  0248
 .................... 	i2c_start(); 
-0348:  BSF    F94.4
-034A:  MOVLW  1E
-034C:  MOVWF  00
-034E:  DECFSZ 00,F
-0350:  BRA    034E
-0352:  BSF    F94.3
-0354:  MOVLW  1F
-0356:  MOVWF  00
-0358:  DECFSZ 00,F
-035A:  BRA    0358
-035C:  BTFSS  F82.3
+034C:  BSF    F94.4
+034E:  MOVLW  1E
+0350:  MOVWF  00
+0352:  DECFSZ 00,F
+0354:  BRA    0352
+0356:  BSF    F94.3
+0358:  MOVLW  1F
+035A:  MOVWF  00
+035C:  DECFSZ 00,F
 035E:  BRA    035C
-0360:  BCF    F8B.4
-0362:  BCF    F94.4
-0364:  MOVLW  1E
-0366:  MOVWF  00
-0368:  DECFSZ 00,F
-036A:  BRA    0368
-036C:  BCF    F8B.3
-036E:  BCF    F94.3
+0360:  BTFSS  F82.3
+0362:  BRA    0360
+0364:  BCF    F8B.4
+0366:  BCF    F94.4
+0368:  MOVLW  1E
+036A:  MOVWF  00
+036C:  DECFSZ 00,F
+036E:  BRA    036C
+0370:  BCF    F8B.3
+0372:  BCF    F94.3
 .................... 	i2c_write(DS1307 + 1); 
-0370:  MOVLW  D1
-0372:  MOVWF  24
-0374:  RCALL  0244
+0374:  MOVLW  D1
+0376:  MOVWF  24
+0378:  RCALL  0248
 .................... 	leitura = i2c_read(0); 
-0376:  CLRF   00
-0378:  BRA    02B0
-037A:  MOVFF  01,23
+037A:  CLRF   00
+037C:  BRA    02B4
+037E:  MOVFF  01,23
 .................... 	i2c_stop(); 
-037E:  BCF    F94.4
-0380:  NOP   
-0382:  BSF    F94.3
-0384:  BTFSS  F82.3
-0386:  BRA    0384
-0388:  MOVLW  1E
-038A:  MOVWF  00
-038C:  DECFSZ 00,F
-038E:  BRA    038C
-0390:  BRA    0392
-0392:  NOP   
-0394:  BSF    F94.4
-0396:  MOVLW  1E
-0398:  MOVWF  00
-039A:  DECFSZ 00,F
-039C:  BRA    039A
+0382:  BCF    F94.4
+0384:  NOP   
+0386:  BSF    F94.3
+0388:  BTFSS  F82.3
+038A:  BRA    0388
+038C:  MOVLW  1E
+038E:  MOVWF  00
+0390:  DECFSZ 00,F
+0392:  BRA    0390
+0394:  BRA    0396
+0396:  NOP   
+0398:  BSF    F94.4
+039A:  MOVLW  1E
+039C:  MOVWF  00
+039E:  DECFSZ 00,F
+03A0:  BRA    039E
 ....................  
 .................... 	return leitura; 
-039E:  MOVFF  23,01
+03A2:  MOVFF  23,01
 .................... } 
-03A2:  RETURN 0
+03A6:  RETURN 0
 ....................  
 .................... void writeReg(int addr, int dado) { 
 .................... 	i2c_start(); 
-03A4:  BSF    F94.4
-03A6:  MOVLW  1E
-03A8:  MOVWF  00
-03AA:  DECFSZ 00,F
-03AC:  BRA    03AA
-03AE:  BSF    F94.3
-03B0:  MOVLW  1F
-03B2:  MOVWF  00
-03B4:  DECFSZ 00,F
-03B6:  BRA    03B4
-03B8:  BCF    F8B.4
-03BA:  BCF    F94.4
-03BC:  MOVLW  1E
-03BE:  MOVWF  00
-03C0:  DECFSZ 00,F
-03C2:  BRA    03C0
-03C4:  BCF    F8B.3
-03C6:  BCF    F94.3
+03A8:  BSF    F94.4
+03AA:  MOVLW  1E
+03AC:  MOVWF  00
+03AE:  DECFSZ 00,F
+03B0:  BRA    03AE
+03B2:  BSF    F94.3
+03B4:  MOVLW  1F
+03B6:  MOVWF  00
+03B8:  DECFSZ 00,F
+03BA:  BRA    03B8
+03BC:  BCF    F8B.4
+03BE:  BCF    F94.4
+03C0:  MOVLW  1E
+03C2:  MOVWF  00
+03C4:  DECFSZ 00,F
+03C6:  BRA    03C4
+03C8:  BCF    F8B.3
+03CA:  BCF    F94.3
 .................... 	i2c_write(DS1307); 
-03C8:  MOVLW  D0
-03CA:  MOVWF  24
-03CC:  RCALL  0244
+03CC:  MOVLW  D0
+03CE:  MOVWF  24
+03D0:  RCALL  0248
 .................... 	i2c_write(addr); 
-03CE:  MOVFF  1B,24
-03D2:  RCALL  0244
+03D2:  MOVFF  1B,24
+03D6:  RCALL  0248
 .................... 	i2c_write(dado); 
-03D4:  MOVFF  1C,24
-03D8:  RCALL  0244
+03D8:  MOVFF  1C,24
+03DC:  RCALL  0248
 .................... 	i2c_stop(); 
-03DA:  BCF    F94.4
-03DC:  NOP   
-03DE:  BSF    F94.3
-03E0:  BTFSS  F82.3
-03E2:  BRA    03E0
-03E4:  MOVLW  1E
-03E6:  MOVWF  00
-03E8:  DECFSZ 00,F
-03EA:  BRA    03E8
-03EC:  BRA    03EE
-03EE:  NOP   
-03F0:  BSF    F94.4
-03F2:  MOVLW  1E
-03F4:  MOVWF  00
-03F6:  DECFSZ 00,F
-03F8:  BRA    03F6
+03DE:  BCF    F94.4
+03E0:  NOP   
+03E2:  BSF    F94.3
+03E4:  BTFSS  F82.3
+03E6:  BRA    03E4
+03E8:  MOVLW  1E
+03EA:  MOVWF  00
+03EC:  DECFSZ 00,F
+03EE:  BRA    03EC
+03F0:  BRA    03F2
+03F2:  NOP   
+03F4:  BSF    F94.4
+03F6:  MOVLW  1E
+03F8:  MOVWF  00
+03FA:  DECFSZ 00,F
+03FC:  BRA    03FA
 .................... } 
-03FA:  RETURN 0
+03FE:  RETURN 0
 ....................  
 .................... void pause(void) { 
 .................... 	int aux; 
@@ -356,332 +356,332 @@ CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 14:51
 ....................  
 .................... 	lsb = in & 0x0F; 
 *
-0610:  MOVF   1D,W
-0612:  ANDLW  0F
-0614:  MOVWF  1E
-.................... 	msb = (in & 0x70) >> 4; 
 0616:  MOVF   1D,W
-0618:  ANDLW  70
-061A:  MOVWF  00
-061C:  SWAPF  00,W
-061E:  MOVWF  1F
-0620:  MOVLW  0F
-0622:  ANDWF  1F,F
+0618:  ANDLW  0F
+061A:  MOVWF  1E
+.................... 	msb = (in & 0x70) >> 4; 
+061C:  MOVF   1D,W
+061E:  ANDLW  70
+0620:  MOVWF  00
+0622:  SWAPF  00,W
+0624:  MOVWF  1F
+0626:  MOVLW  0F
+0628:  ANDWF  1F,F
 ....................  
 .................... 	return 10 * msb + lsb; 
-0624:  MOVF   1F,W
-0626:  MULLW  0A
-0628:  MOVF   FF3,W
-062A:  ADDWF  1E,W
-062C:  MOVWF  01
+062A:  MOVF   1F,W
+062C:  MULLW  0A
+062E:  MOVF   FF3,W
+0630:  ADDWF  1E,W
+0632:  MOVWF  01
 .................... } 
-062E:  RETURN 0
+0634:  RETURN 0
 ....................  
 .................... int toHour(int in, short *AM_PM, short *formato) { 
 .................... 	int msb, lsb; 
 ....................  
 .................... 	*formato = bit_test(in, 6); 
 *
-065A:  MOVFF  28,FE9
-065E:  MOVFF  29,FEA
-0662:  MOVLW  00
-0664:  BTFSC  25.6
-0666:  MOVLW  01
-0668:  MOVWF  FEF
+0660:  MOVFF  28,FE9
+0664:  MOVFF  29,FEA
+0668:  MOVLW  00
+066A:  BTFSC  25.6
+066C:  MOVLW  01
+066E:  MOVWF  FEF
 .................... 	if (*formato) { 
-066A:  MOVFF  29,03
-066E:  MOVFF  28,FE9
-0672:  MOVFF  29,FEA
-0676:  MOVF   FEF,F
-0678:  BZ    069A
+0670:  MOVFF  29,03
+0674:  MOVFF  28,FE9
+0678:  MOVFF  29,FEA
+067C:  MOVF   FEF,F
+067E:  BZ    06A0
 .................... 		msb = (in & 0x10) >> 4; 
-067A:  MOVF   25,W
-067C:  ANDLW  10
-067E:  MOVWF  00
-0680:  SWAPF  00,W
-0682:  MOVWF  2A
-0684:  MOVLW  0F
-0686:  ANDWF  2A,F
+0680:  MOVF   25,W
+0682:  ANDLW  10
+0684:  MOVWF  00
+0686:  SWAPF  00,W
+0688:  MOVWF  2A
+068A:  MOVLW  0F
+068C:  ANDWF  2A,F
 .................... 		*AM_PM = bit_test(in, 5); 
-0688:  MOVFF  26,FE9
-068C:  MOVFF  27,FEA
-0690:  MOVLW  00
-0692:  BTFSC  25.5
-0694:  MOVLW  01
-0696:  MOVWF  FEF
+068E:  MOVFF  26,FE9
+0692:  MOVFF  27,FEA
+0696:  MOVLW  00
+0698:  BTFSC  25.5
+069A:  MOVLW  01
+069C:  MOVWF  FEF
 .................... 	} else { 
-0698:  BRA    06A8
+069E:  BRA    06AE
 .................... 		msb = (in & 0x30) >> 4; 
-069A:  MOVF   25,W
-069C:  ANDLW  30
-069E:  MOVWF  00
-06A0:  SWAPF  00,W
-06A2:  MOVWF  2A
-06A4:  MOVLW  0F
-06A6:  ANDWF  2A,F
+06A0:  MOVF   25,W
+06A2:  ANDLW  30
+06A4:  MOVWF  00
+06A6:  SWAPF  00,W
+06A8:  MOVWF  2A
+06AA:  MOVLW  0F
+06AC:  ANDWF  2A,F
 .................... 	} 
 .................... 	lsb = in & 0x0F; 
-06A8:  MOVF   25,W
-06AA:  ANDLW  0F
-06AC:  MOVWF  2B
+06AE:  MOVF   25,W
+06B0:  ANDLW  0F
+06B2:  MOVWF  2B
 ....................  
 .................... 	return 10 * msb + lsb; 
-06AE:  MOVF   2A,W
-06B0:  MULLW  0A
-06B2:  MOVF   FF3,W
-06B4:  ADDWF  2B,W
-06B6:  MOVWF  01
+06B4:  MOVF   2A,W
+06B6:  MULLW  0A
+06B8:  MOVF   FF3,W
+06BA:  ADDWF  2B,W
+06BC:  MOVWF  01
 .................... } 
-06B8:  GOTO   06F8 (RETURN)
+06BE:  GOTO   06FE (RETURN)
 ....................  
 .................... int toDate(int in) { 
 .................... 	int msb, lsb; 
 ....................  
 .................... 	lsb = in & 0x0F; 
 *
-070E:  MOVF   1D,W
-0710:  ANDLW  0F
-0712:  MOVWF  1F
-.................... 	msb = (in & 0x30) >> 4; 
 0714:  MOVF   1D,W
-0716:  ANDLW  30
-0718:  MOVWF  00
-071A:  SWAPF  00,W
-071C:  MOVWF  1E
-071E:  MOVLW  0F
-0720:  ANDWF  1E,F
+0716:  ANDLW  0F
+0718:  MOVWF  1F
+.................... 	msb = (in & 0x30) >> 4; 
+071A:  MOVF   1D,W
+071C:  ANDLW  30
+071E:  MOVWF  00
+0720:  SWAPF  00,W
+0722:  MOVWF  1E
+0724:  MOVLW  0F
+0726:  ANDWF  1E,F
 ....................  
 .................... 	return msb * 10 + lsb; 
-0722:  MOVF   1E,W
-0724:  MULLW  0A
-0726:  MOVF   FF3,W
-0728:  ADDWF  1F,W
-072A:  MOVWF  01
+0728:  MOVF   1E,W
+072A:  MULLW  0A
+072C:  MOVF   FF3,W
+072E:  ADDWF  1F,W
+0730:  MOVWF  01
 .................... } 
-072C:  GOTO   0740 (RETURN)
+0732:  GOTO   0746 (RETURN)
 ....................  
 .................... int toMonth(int in) { 
 .................... 	int lsb, msb; 
 ....................  
 .................... 	lsb = in & 0x0F; 
 *
-0746:  MOVF   1D,W
-0748:  ANDLW  0F
-074A:  MOVWF  1E
-.................... 	msb = (in & 0x10) >> 4; 
 074C:  MOVF   1D,W
-074E:  ANDLW  10
-0750:  MOVWF  00
-0752:  SWAPF  00,W
-0754:  MOVWF  1F
-0756:  MOVLW  0F
-0758:  ANDWF  1F,F
+074E:  ANDLW  0F
+0750:  MOVWF  1E
+.................... 	msb = (in & 0x10) >> 4; 
+0752:  MOVF   1D,W
+0754:  ANDLW  10
+0756:  MOVWF  00
+0758:  SWAPF  00,W
+075A:  MOVWF  1F
+075C:  MOVLW  0F
+075E:  ANDWF  1F,F
 ....................  
 .................... 	return msb * 10 + lsb; 
-075A:  MOVF   1F,W
-075C:  MULLW  0A
-075E:  MOVF   FF3,W
-0760:  ADDWF  1E,W
-0762:  MOVWF  01
+0760:  MOVF   1F,W
+0762:  MULLW  0A
+0764:  MOVF   FF3,W
+0766:  ADDWF  1E,W
+0768:  MOVWF  01
 .................... } 
-0764:  GOTO   0778 (RETURN)
+076A:  GOTO   077E (RETURN)
 ....................  
 .................... int toYear(int in) { 
 .................... 	int lsb, msb; 
 ....................  
 .................... 	lsb = in & 0x0F; 
 *
-077E:  MOVF   1D,W
-0780:  ANDLW  0F
-0782:  MOVWF  1E
-.................... 	msb = (in & 0xF0) >> 4; 
 0784:  MOVF   1D,W
-0786:  ANDLW  F0
-0788:  MOVWF  00
-078A:  SWAPF  00,W
-078C:  MOVWF  1F
-078E:  MOVLW  0F
-0790:  ANDWF  1F,F
+0786:  ANDLW  0F
+0788:  MOVWF  1E
+.................... 	msb = (in & 0xF0) >> 4; 
+078A:  MOVF   1D,W
+078C:  ANDLW  F0
+078E:  MOVWF  00
+0790:  SWAPF  00,W
+0792:  MOVWF  1F
+0794:  MOVLW  0F
+0796:  ANDWF  1F,F
 ....................  
 .................... 	return msb * 10 + lsb; 
-0792:  MOVF   1F,W
-0794:  MULLW  0A
-0796:  MOVF   FF3,W
-0798:  ADDWF  1E,W
-079A:  MOVWF  01
+0798:  MOVF   1F,W
+079A:  MULLW  0A
+079C:  MOVF   FF3,W
+079E:  ADDWF  1E,W
+07A0:  MOVWF  01
 .................... } 
-079C:  GOTO   07B0 (RETURN)
+07A2:  GOTO   07B6 (RETURN)
 ....................  
 .................... int getSec(void) { 
 .................... 	return toSec(getReg(sec_addr)); 
 *
-0630:  CLRF   22
-0632:  RCALL  0318
-0634:  MOVFF  01,1C
-0638:  MOVFF  01,1D
-063C:  RCALL  0610
-063E:  MOVF   01,W
+0636:  CLRF   22
+0638:  RCALL  031C
+063A:  MOVFF  01,1C
+063E:  MOVFF  01,1D
+0642:  RCALL  0616
+0644:  MOVF   01,W
 .................... } 
-0640:  GOTO   07CA (RETURN)
+0646:  GOTO   07D0 (RETURN)
 ....................  
 .................... int getMin(void) { 
 .................... 	return toSec(getReg(min_addr)); 
-0644:  MOVLW  01
-0646:  MOVWF  22
-0648:  RCALL  0318
-064A:  MOVFF  01,1C
-064E:  MOVFF  01,1D
-0652:  RCALL  0610
-0654:  MOVF   01,W
+064A:  MOVLW  01
+064C:  MOVWF  22
+064E:  RCALL  031C
+0650:  MOVFF  01,1C
+0654:  MOVFF  01,1D
+0658:  RCALL  0616
+065A:  MOVF   01,W
 .................... } 
-0656:  GOTO   07EA (RETURN)
+065C:  GOTO   07F0 (RETURN)
 ....................  
 .................... int getHour(short *AM_PM, short *formato) { 
 .................... 	return toHour(getReg(hour_addr), *AM_PM, *formato); 
 *
-06BC:  MOVLW  02
-06BE:  MOVWF  22
-06C0:  RCALL  0318
-06C2:  MOVFF  01,22
-06C6:  MOVFF  1F,03
-06CA:  MOVFF  1E,FE9
-06CE:  MOVFF  1F,FEA
-06D2:  MOVFF  FEF,23
-06D6:  MOVFF  21,03
-06DA:  MOVFF  20,FE9
-06DE:  MOVFF  21,FEA
-06E2:  MOVFF  FEF,24
-06E6:  MOVFF  01,25
-06EA:  CLRF   27
-06EC:  MOVFF  23,26
-06F0:  CLRF   29
-06F2:  MOVFF  24,28
-06F6:  BRA    065A
-06F8:  MOVF   01,W
+06C2:  MOVLW  02
+06C4:  MOVWF  22
+06C6:  RCALL  031C
+06C8:  MOVFF  01,22
+06CC:  MOVFF  1F,03
+06D0:  MOVFF  1E,FE9
+06D4:  MOVFF  1F,FEA
+06D8:  MOVFF  FEF,23
+06DC:  MOVFF  21,03
+06E0:  MOVFF  20,FE9
+06E4:  MOVFF  21,FEA
+06E8:  MOVFF  FEF,24
+06EC:  MOVFF  01,25
+06F0:  CLRF   27
+06F2:  MOVFF  23,26
+06F6:  CLRF   29
+06F8:  MOVFF  24,28
+06FC:  BRA    0660
+06FE:  MOVF   01,W
 .................... } 
-06FA:  GOTO   0824 (RETURN)
+0700:  GOTO   082A (RETURN)
 ....................  
 .................... int getDayOfWeek(void) { 
 .................... 	return getReg(dow_addr) & 0x07; 
-06FE:  MOVLW  03
-0700:  MOVWF  22
-0702:  RCALL  0318
-0704:  MOVF   01,W
-0706:  ANDLW  07
-0708:  MOVWF  01
+0704:  MOVLW  03
+0706:  MOVWF  22
+0708:  RCALL  031C
+070A:  MOVF   01,W
+070C:  ANDLW  07
+070E:  MOVWF  01
 .................... } 
-070A:  GOTO   0844 (RETURN)
+0710:  GOTO   084A (RETURN)
 ....................  
 .................... int getDate(void) { 
 .................... 	return toDate(getReg(date_addr)); 
 *
-0730:  MOVLW  04
-0732:  MOVWF  22
-0734:  RCALL  0318
-0736:  MOVFF  01,1C
-073A:  MOVFF  01,1D
-073E:  BRA    070E
-0740:  MOVF   01,W
+0736:  MOVLW  04
+0738:  MOVWF  22
+073A:  RCALL  031C
+073C:  MOVFF  01,1C
+0740:  MOVFF  01,1D
+0744:  BRA    0714
+0746:  MOVF   01,W
 .................... } 
-0742:  GOTO   0864 (RETURN)
+0748:  GOTO   086A (RETURN)
 ....................  
 .................... int getMonth(void) { 
 .................... 	return toMonth(getReg(month_addr)); 
 *
-0768:  MOVLW  05
-076A:  MOVWF  22
-076C:  RCALL  0318
-076E:  MOVFF  01,1C
-0772:  MOVFF  01,1D
-0776:  BRA    0746
-0778:  MOVF   01,W
+076E:  MOVLW  05
+0770:  MOVWF  22
+0772:  RCALL  031C
+0774:  MOVFF  01,1C
+0778:  MOVFF  01,1D
+077C:  BRA    074C
+077E:  MOVF   01,W
 .................... } 
-077A:  GOTO   0884 (RETURN)
+0780:  GOTO   088A (RETURN)
 ....................  
 .................... int getYear(void) { 
 .................... 	return toYear(getReg(year_addr)); 
 *
-07A0:  MOVLW  06
-07A2:  MOVWF  22
-07A4:  RCALL  0318
-07A6:  MOVFF  01,1C
-07AA:  MOVFF  01,1D
-07AE:  BRA    077E
-07B0:  MOVF   01,W
+07A6:  MOVLW  06
+07A8:  MOVWF  22
+07AA:  RCALL  031C
+07AC:  MOVFF  01,1C
+07B0:  MOVFF  01,1D
+07B4:  BRA    0784
+07B6:  MOVF   01,W
 .................... } 
-07B2:  GOTO   08A4 (RETURN)
+07B8:  GOTO   08AA (RETURN)
 ....................  
 .................... short initDS1307(void) { 
 *
-03FC:  BSF    19.0
+0400:  BSF    19.0
 .................... 	int aux; 
 .................... 	short ack = 1; 
 ....................  
 .................... 	i2c_start(); 
-03FE:  BSF    F94.4
-0400:  MOVLW  1E
-0402:  MOVWF  00
-0404:  DECFSZ 00,F
-0406:  BRA    0404
-0408:  BSF    F94.3
-040A:  MOVLW  1F
-040C:  MOVWF  00
-040E:  DECFSZ 00,F
-0410:  BRA    040E
-0412:  BCF    F8B.4
-0414:  BCF    F94.4
-0416:  MOVLW  1E
-0418:  MOVWF  00
-041A:  DECFSZ 00,F
-041C:  BRA    041A
-041E:  BCF    F8B.3
-0420:  BCF    F94.3
+0402:  BSF    F94.4
+0404:  MOVLW  1E
+0406:  MOVWF  00
+0408:  DECFSZ 00,F
+040A:  BRA    0408
+040C:  BSF    F94.3
+040E:  MOVLW  1F
+0410:  MOVWF  00
+0412:  DECFSZ 00,F
+0414:  BRA    0412
+0416:  BCF    F8B.4
+0418:  BCF    F94.4
+041A:  MOVLW  1E
+041C:  MOVWF  00
+041E:  DECFSZ 00,F
+0420:  BRA    041E
+0422:  BCF    F8B.3
+0424:  BCF    F94.3
 .................... 	ack = i2c_write(DS1307); 
-0422:  MOVLW  D0
-0424:  MOVWF  24
-0426:  RCALL  0244
-0428:  MOVF   01,W
-042A:  BCF    19.0
-042C:  BTFSC  01.0
-042E:  BSF    19.0
+0426:  MOVLW  D0
+0428:  MOVWF  24
+042A:  RCALL  0248
+042C:  MOVF   01,W
+042E:  BCF    19.0
+0430:  BTFSC  01.0
+0432:  BSF    19.0
 .................... 	i2c_stop(); 
-0430:  BCF    F94.4
-0432:  NOP   
-0434:  BSF    F94.3
-0436:  BTFSS  F82.3
-0438:  BRA    0436
-043A:  MOVLW  1E
-043C:  MOVWF  00
-043E:  DECFSZ 00,F
-0440:  BRA    043E
-0442:  BRA    0444
-0444:  NOP   
-0446:  BSF    F94.4
-0448:  MOVLW  1E
-044A:  MOVWF  00
-044C:  DECFSZ 00,F
-044E:  BRA    044C
+0434:  BCF    F94.4
+0436:  NOP   
+0438:  BSF    F94.3
+043A:  BTFSS  F82.3
+043C:  BRA    043A
+043E:  MOVLW  1E
+0440:  MOVWF  00
+0442:  DECFSZ 00,F
+0444:  BRA    0442
+0446:  BRA    0448
+0448:  NOP   
+044A:  BSF    F94.4
+044C:  MOVLW  1E
+044E:  MOVWF  00
+0450:  DECFSZ 00,F
+0452:  BRA    0450
 ....................  
 .................... 	if (!ack) 
-0450:  BTFSC  19.0
-0452:  BRA    0464
+0454:  BTFSC  19.0
+0456:  BRA    0468
 .................... 		writeReg(sec_addr, getReg(sec_addr) & 0x7F); 
-0454:  CLRF   22
-0456:  RCALL  0318
-0458:  MOVF   01,W
-045A:  ANDLW  7F
-045C:  MOVWF  1A
-045E:  CLRF   1B
-0460:  MOVWF  1C
-0462:  RCALL  03A4
+0458:  CLRF   22
+045A:  RCALL  031C
+045C:  MOVF   01,W
+045E:  ANDLW  7F
+0460:  MOVWF  1A
+0462:  CLRF   1B
+0464:  MOVWF  1C
+0466:  RCALL  03A8
 ....................  
 .................... 	return ack; 
-0464:  MOVLW  00
-0466:  BTFSC  19.0
-0468:  MOVLW  01
-046A:  MOVWF  01
+0468:  MOVLW  00
+046A:  BTFSC  19.0
+046C:  MOVLW  01
+046E:  MOVWF  01
 .................... } 
-046C:  GOTO   0A28 (RETURN)
+0470:  GOTO   0A2E (RETURN)
 ....................  
 .................... /*void getDS1307(struct cal *calendario) { 
 ....................  int aux; 
@@ -705,138 +705,138 @@ CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 14:51
 .................... void getDS1307(struct cal *calendario) { 
 .................... 	calendario->segundos = getSec(); 
 *
-07B6:  MOVLW  01
-07B8:  ADDWF  18,W
-07BA:  MOVWF  01
-07BC:  MOVLW  00
-07BE:  ADDWFC 19,W
-07C0:  MOVWF  03
-07C2:  MOVFF  01,1A
-07C6:  MOVWF  1B
-07C8:  BRA    0630
-07CA:  MOVFF  1B,FEA
-07CE:  MOVFF  1A,FE9
-07D2:  MOVFF  01,FEF
+07BC:  MOVLW  01
+07BE:  ADDWF  18,W
+07C0:  MOVWF  01
+07C2:  MOVLW  00
+07C4:  ADDWFC 19,W
+07C6:  MOVWF  03
+07C8:  MOVFF  01,1A
+07CC:  MOVWF  1B
+07CE:  BRA    0636
+07D0:  MOVFF  1B,FEA
+07D4:  MOVFF  1A,FE9
+07D8:  MOVFF  01,FEF
 .................... 	calendario->minutos = getMin(); 
-07D6:  MOVLW  02
-07D8:  ADDWF  18,W
-07DA:  MOVWF  01
-07DC:  MOVLW  00
-07DE:  ADDWFC 19,W
-07E0:  MOVWF  03
-07E2:  MOVFF  01,1A
-07E6:  MOVWF  1B
-07E8:  BRA    0644
-07EA:  MOVFF  1B,FEA
-07EE:  MOVFF  1A,FE9
-07F2:  MOVFF  01,FEF
+07DC:  MOVLW  02
+07DE:  ADDWF  18,W
+07E0:  MOVWF  01
+07E2:  MOVLW  00
+07E4:  ADDWFC 19,W
+07E6:  MOVWF  03
+07E8:  MOVFF  01,1A
+07EC:  MOVWF  1B
+07EE:  BRA    064A
+07F0:  MOVFF  1B,FEA
+07F4:  MOVFF  1A,FE9
+07F8:  MOVFF  01,FEF
 .................... 	calendario->horas = getHour(calendario.am_pm, calendario._12h); 
-07F6:  MOVLW  03
-07F8:  ADDWF  18,W
-07FA:  MOVWF  01
-07FC:  MOVLW  00
-07FE:  ADDWFC 19,W
-0800:  MOVWF  03
-0802:  MOVFF  01,1A
-0806:  MOVWF  1B
-0808:  MOVLW  00
-080A:  BTFSC  18.0
-080C:  MOVLW  01
-080E:  MOVWF  1C
-0810:  MOVLW  00
-0812:  BTFSC  18.1
-0814:  MOVLW  01
-0816:  MOVWF  1D
-0818:  CLRF   1F
-081A:  MOVFF  1C,1E
-081E:  CLRF   21
-0820:  MOVWF  20
-0822:  BRA    06BC
-0824:  MOVFF  1B,FEA
-0828:  MOVFF  1A,FE9
-082C:  MOVFF  01,FEF
+07FC:  MOVLW  03
+07FE:  ADDWF  18,W
+0800:  MOVWF  01
+0802:  MOVLW  00
+0804:  ADDWFC 19,W
+0806:  MOVWF  03
+0808:  MOVFF  01,1A
+080C:  MOVWF  1B
+080E:  MOVLW  00
+0810:  BTFSC  18.0
+0812:  MOVLW  01
+0814:  MOVWF  1C
+0816:  MOVLW  00
+0818:  BTFSC  18.1
+081A:  MOVLW  01
+081C:  MOVWF  1D
+081E:  CLRF   1F
+0820:  MOVFF  1C,1E
+0824:  CLRF   21
+0826:  MOVWF  20
+0828:  BRA    06C2
+082A:  MOVFF  1B,FEA
+082E:  MOVFF  1A,FE9
+0832:  MOVFF  01,FEF
 .................... 	calendario->dow = getDayOfWeek(); 
-0830:  MOVLW  04
-0832:  ADDWF  18,W
-0834:  MOVWF  01
-0836:  MOVLW  00
-0838:  ADDWFC 19,W
-083A:  MOVWF  03
-083C:  MOVFF  01,1A
-0840:  MOVWF  1B
-0842:  BRA    06FE
-0844:  MOVFF  1B,FEA
-0848:  MOVFF  1A,FE9
-084C:  MOVFF  01,FEF
+0836:  MOVLW  04
+0838:  ADDWF  18,W
+083A:  MOVWF  01
+083C:  MOVLW  00
+083E:  ADDWFC 19,W
+0840:  MOVWF  03
+0842:  MOVFF  01,1A
+0846:  MOVWF  1B
+0848:  BRA    0704
+084A:  MOVFF  1B,FEA
+084E:  MOVFF  1A,FE9
+0852:  MOVFF  01,FEF
 .................... 	calendario->dia = getDate(); 
-0850:  MOVLW  05
-0852:  ADDWF  18,W
-0854:  MOVWF  01
-0856:  MOVLW  00
-0858:  ADDWFC 19,W
-085A:  MOVWF  03
-085C:  MOVFF  01,1A
-0860:  MOVWF  1B
-0862:  BRA    0730
-0864:  MOVFF  1B,FEA
-0868:  MOVFF  1A,FE9
-086C:  MOVFF  01,FEF
+0856:  MOVLW  05
+0858:  ADDWF  18,W
+085A:  MOVWF  01
+085C:  MOVLW  00
+085E:  ADDWFC 19,W
+0860:  MOVWF  03
+0862:  MOVFF  01,1A
+0866:  MOVWF  1B
+0868:  BRA    0736
+086A:  MOVFF  1B,FEA
+086E:  MOVFF  1A,FE9
+0872:  MOVFF  01,FEF
 .................... 	calendario->mes = getMonth(); 
-0870:  MOVLW  06
-0872:  ADDWF  18,W
-0874:  MOVWF  01
-0876:  MOVLW  00
-0878:  ADDWFC 19,W
-087A:  MOVWF  03
-087C:  MOVFF  01,1A
-0880:  MOVWF  1B
-0882:  BRA    0768
-0884:  MOVFF  1B,FEA
-0888:  MOVFF  1A,FE9
-088C:  MOVFF  01,FEF
+0876:  MOVLW  06
+0878:  ADDWF  18,W
+087A:  MOVWF  01
+087C:  MOVLW  00
+087E:  ADDWFC 19,W
+0880:  MOVWF  03
+0882:  MOVFF  01,1A
+0886:  MOVWF  1B
+0888:  BRA    076E
+088A:  MOVFF  1B,FEA
+088E:  MOVFF  1A,FE9
+0892:  MOVFF  01,FEF
 .................... 	calendario->ano = getYear(); 
-0890:  MOVLW  07
-0892:  ADDWF  18,W
-0894:  MOVWF  01
-0896:  MOVLW  00
-0898:  ADDWFC 19,W
-089A:  MOVWF  03
-089C:  MOVFF  01,1A
-08A0:  MOVWF  1B
-08A2:  BRA    07A0
-08A4:  MOVFF  1B,FEA
-08A8:  MOVFF  1A,FE9
-08AC:  MOVFF  01,FEF
+0896:  MOVLW  07
+0898:  ADDWF  18,W
+089A:  MOVWF  01
+089C:  MOVLW  00
+089E:  ADDWFC 19,W
+08A0:  MOVWF  03
+08A2:  MOVFF  01,1A
+08A6:  MOVWF  1B
+08A8:  BRA    07A6
+08AA:  MOVFF  1B,FEA
+08AE:  MOVFF  1A,FE9
+08B2:  MOVFF  01,FEF
 .................... } 
-08B0:  GOTO   0A82 (RETURN)
+08B6:  GOTO   0A88 (RETURN)
 ....................  
 .................... int toBcd(int in) { 
 .................... 	int unidade, dezena; 
 ....................  
 .................... 	dezena = in / 10; 
 *
-0498:  MOVFF  1C,1F
-049C:  MOVLW  0A
-049E:  MOVWF  20
-04A0:  RCALL  0470
-04A2:  MOVFF  01,1E
+049C:  MOVFF  1C,1F
+04A0:  MOVLW  0A
+04A2:  MOVWF  20
+04A4:  RCALL  0474
+04A6:  MOVFF  01,1E
 .................... 	unidade = in - dezena * 10; 
-04A6:  MOVF   1E,W
-04A8:  MULLW  0A
-04AA:  MOVF   FF3,W
-04AC:  SUBWF  1C,W
-04AE:  MOVWF  1D
+04AA:  MOVF   1E,W
+04AC:  MULLW  0A
+04AE:  MOVF   FF3,W
+04B0:  SUBWF  1C,W
+04B2:  MOVWF  1D
 ....................  
 .................... 	return (dezena << 4) | unidade; 
-04B0:  SWAPF  1E,W
-04B2:  MOVWF  00
-04B4:  MOVLW  F0
-04B6:  ANDWF  00,F
-04B8:  MOVF   00,W
-04BA:  IORWF  1D,W
-04BC:  MOVWF  01
+04B4:  SWAPF  1E,W
+04B6:  MOVWF  00
+04B8:  MOVLW  F0
+04BA:  ANDWF  00,F
+04BC:  MOVF   00,W
+04BE:  IORWF  1D,W
+04C0:  MOVWF  01
 .................... } 
-04BE:  RETURN 0
+04C2:  RETURN 0
 ....................  
 .................... /*void setDS1307(struct cal *calen) { 
 ....................  int hor; 
@@ -882,179 +882,180 @@ CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 14:51
 .................... void setDS1307(struct cal *calen) { 
 ....................  
 .................... 	writeReg(sec_addr, toBcd(calen->segundos & 0x7F)); 
-04C0:  MOVLW  01
-04C2:  ADDWF  18,W
-04C4:  MOVWF  FE9
-04C6:  MOVLW  00
-04C8:  ADDWFC 19,W
-04CA:  MOVWF  FEA
-04CC:  MOVF   FEF,W
-04CE:  ANDLW  7F
-04D0:  MOVWF  1A
-04D2:  MOVWF  1C
-04D4:  RCALL  0498
-04D6:  MOVFF  01,1A
-04DA:  CLRF   1B
-04DC:  MOVFF  01,1C
-04E0:  RCALL  03A4
+04C4:  MOVLW  01
+04C6:  ADDWF  18,W
+04C8:  MOVWF  FE9
+04CA:  MOVLW  00
+04CC:  ADDWFC 19,W
+04CE:  MOVWF  FEA
+04D0:  MOVF   FEF,W
+04D2:  ANDLW  7F
+04D4:  MOVWF  1A
+04D6:  MOVWF  1C
+04D8:  RCALL  049C
+04DA:  MOVFF  01,1A
+04DE:  CLRF   1B
+04E0:  MOVFF  01,1C
+04E4:  RCALL  03A8
 .................... 	delay_ms(1); 
-04E2:  MOVLW  01
-04E4:  MOVWF  24
-04E6:  RCALL  0120
+04E6:  MOVLW  01
+04E8:  MOVWF  24
+04EA:  RCALL  0120
 ....................  
 .................... 	writeReg(min_addr, toBcd(calen->minutos & 0x7F)); 
-04E8:  MOVLW  02
-04EA:  ADDWF  18,W
-04EC:  MOVWF  FE9
-04EE:  MOVLW  00
-04F0:  ADDWFC 19,W
-04F2:  MOVWF  FEA
-04F4:  MOVF   FEF,W
-04F6:  ANDLW  7F
-04F8:  MOVWF  1A
-04FA:  MOVWF  1C
-04FC:  RCALL  0498
-04FE:  MOVFF  01,1A
-0502:  MOVLW  01
-0504:  MOVWF  1B
-0506:  MOVFF  01,1C
-050A:  RCALL  03A4
+04EC:  MOVLW  02
+04EE:  ADDWF  18,W
+04F0:  MOVWF  FE9
+04F2:  MOVLW  00
+04F4:  ADDWFC 19,W
+04F6:  MOVWF  FEA
+04F8:  MOVF   FEF,W
+04FA:  ANDLW  7F
+04FC:  MOVWF  1A
+04FE:  MOVWF  1C
+0500:  RCALL  049C
+0502:  MOVFF  01,1A
+0506:  MOVLW  01
+0508:  MOVWF  1B
+050A:  MOVFF  01,1C
+050E:  RCALL  03A8
 .................... 	delay_ms(1); 
-050C:  MOVLW  01
-050E:  MOVWF  24
-0510:  RCALL  0120
+0510:  MOVLW  01
+0512:  MOVWF  24
+0514:  RCALL  0120
 ....................  
 .................... 	writeReg(hour_addr, 
-.................... 			((int) calen->_12h << 5) | ((int) calen->am_pm << 5) 
+.................... 			((int) calen->_12h << 6) | ((int) calen->am_pm << 5) 
 .................... 					| toBcd(calen->horas & 0x3F)); 
-0512:  MOVFF  18,FE9
-0516:  MOVFF  19,FEA
-051A:  SWAPF  FEF,W
-051C:  MOVWF  1A
-051E:  RLCF   1A,F
-0520:  MOVLW  E0
-0522:  ANDWF  1A,F
-0524:  MOVFF  18,FE9
-0528:  MOVFF  19,FEA
-052C:  SWAPF  FEF,W
-052E:  MOVWF  00
-0530:  RLCF   00,F
-0532:  MOVLW  E0
-0534:  ANDWF  00,F
-0536:  MOVF   00,W
-0538:  IORWF  1A,F
-053A:  MOVLW  03
-053C:  ADDWF  18,W
-053E:  MOVWF  FE9
-0540:  MOVLW  00
-0542:  ADDWFC 19,W
-0544:  MOVWF  FEA
-0546:  MOVF   FEF,W
-0548:  ANDLW  3F
-054A:  MOVWF  1B
-054C:  MOVWF  1C
-054E:  RCALL  0498
-0550:  MOVF   01,W
-0552:  IORWF  1A,F
-0554:  MOVLW  02
-0556:  MOVWF  1B
-0558:  MOVFF  1A,1C
-055C:  RCALL  03A4
+0516:  MOVFF  18,FE9
+051A:  MOVFF  19,FEA
+051E:  SWAPF  FEF,W
+0520:  MOVWF  1A
+0522:  RLCF   1A,F
+0524:  RLCF   1A,F
+0526:  MOVLW  C0
+0528:  ANDWF  1A,F
+052A:  MOVFF  18,FE9
+052E:  MOVFF  19,FEA
+0532:  SWAPF  FEF,W
+0534:  MOVWF  00
+0536:  RLCF   00,F
+0538:  MOVLW  E0
+053A:  ANDWF  00,F
+053C:  MOVF   00,W
+053E:  IORWF  1A,F
+0540:  MOVLW  03
+0542:  ADDWF  18,W
+0544:  MOVWF  FE9
+0546:  MOVLW  00
+0548:  ADDWFC 19,W
+054A:  MOVWF  FEA
+054C:  MOVF   FEF,W
+054E:  ANDLW  3F
+0550:  MOVWF  1B
+0552:  MOVWF  1C
+0554:  RCALL  049C
+0556:  MOVF   01,W
+0558:  IORWF  1A,F
+055A:  MOVLW  02
+055C:  MOVWF  1B
+055E:  MOVFF  1A,1C
+0562:  RCALL  03A8
 .................... 	delay_ms(1); 
-055E:  MOVLW  01
-0560:  MOVWF  24
-0562:  RCALL  0120
+0564:  MOVLW  01
+0566:  MOVWF  24
+0568:  RCALL  0120
 ....................  
 .................... 	writeReg(dow_addr, calen->dow & 0x07); 
-0564:  MOVLW  04
-0566:  ADDWF  18,W
-0568:  MOVWF  FE9
-056A:  MOVLW  00
-056C:  ADDWFC 19,W
-056E:  MOVWF  FEA
-0570:  MOVF   FEF,W
-0572:  ANDLW  07
-0574:  MOVWF  1A
-0576:  MOVLW  03
-0578:  MOVWF  1B
-057A:  MOVFF  1A,1C
-057E:  RCALL  03A4
+056A:  MOVLW  04
+056C:  ADDWF  18,W
+056E:  MOVWF  FE9
+0570:  MOVLW  00
+0572:  ADDWFC 19,W
+0574:  MOVWF  FEA
+0576:  MOVF   FEF,W
+0578:  ANDLW  07
+057A:  MOVWF  1A
+057C:  MOVLW  03
+057E:  MOVWF  1B
+0580:  MOVFF  1A,1C
+0584:  RCALL  03A8
 .................... 	delay_ms(1); 
-0580:  MOVLW  01
-0582:  MOVWF  24
-0584:  RCALL  0120
+0586:  MOVLW  01
+0588:  MOVWF  24
+058A:  RCALL  0120
 ....................  
 .................... 	writeReg(date_addr, toBcd(calen->dia & 0x3F)); 
-0586:  MOVLW  05
-0588:  ADDWF  18,W
-058A:  MOVWF  FE9
-058C:  MOVLW  00
-058E:  ADDWFC 19,W
-0590:  MOVWF  FEA
-0592:  MOVF   FEF,W
-0594:  ANDLW  3F
-0596:  MOVWF  1A
-0598:  MOVWF  1C
-059A:  RCALL  0498
-059C:  MOVFF  01,1A
-05A0:  MOVLW  04
-05A2:  MOVWF  1B
-05A4:  MOVFF  01,1C
-05A8:  RCALL  03A4
+058C:  MOVLW  05
+058E:  ADDWF  18,W
+0590:  MOVWF  FE9
+0592:  MOVLW  00
+0594:  ADDWFC 19,W
+0596:  MOVWF  FEA
+0598:  MOVF   FEF,W
+059A:  ANDLW  3F
+059C:  MOVWF  1A
+059E:  MOVWF  1C
+05A0:  RCALL  049C
+05A2:  MOVFF  01,1A
+05A6:  MOVLW  04
+05A8:  MOVWF  1B
+05AA:  MOVFF  01,1C
+05AE:  RCALL  03A8
 .................... 	delay_ms(1); 
-05AA:  MOVLW  01
-05AC:  MOVWF  24
-05AE:  RCALL  0120
+05B0:  MOVLW  01
+05B2:  MOVWF  24
+05B4:  RCALL  0120
 ....................  
 .................... 	writeReg(month_addr, toBcd(calen->mes & 0x1F)); 
-05B0:  MOVLW  06
-05B2:  ADDWF  18,W
-05B4:  MOVWF  FE9
-05B6:  MOVLW  00
-05B8:  ADDWFC 19,W
-05BA:  MOVWF  FEA
-05BC:  MOVF   FEF,W
-05BE:  ANDLW  1F
-05C0:  MOVWF  1A
-05C2:  MOVWF  1C
-05C4:  RCALL  0498
-05C6:  MOVFF  01,1A
-05CA:  MOVLW  05
-05CC:  MOVWF  1B
-05CE:  MOVFF  01,1C
-05D2:  RCALL  03A4
+05B6:  MOVLW  06
+05B8:  ADDWF  18,W
+05BA:  MOVWF  FE9
+05BC:  MOVLW  00
+05BE:  ADDWFC 19,W
+05C0:  MOVWF  FEA
+05C2:  MOVF   FEF,W
+05C4:  ANDLW  1F
+05C6:  MOVWF  1A
+05C8:  MOVWF  1C
+05CA:  RCALL  049C
+05CC:  MOVFF  01,1A
+05D0:  MOVLW  05
+05D2:  MOVWF  1B
+05D4:  MOVFF  01,1C
+05D8:  RCALL  03A8
 .................... 	delay_ms(1); 
-05D4:  MOVLW  01
-05D6:  MOVWF  24
-05D8:  RCALL  0120
+05DA:  MOVLW  01
+05DC:  MOVWF  24
+05DE:  RCALL  0120
 ....................  
 .................... 	writeReg(year_addr, toBcd(calen->ano)); 
-05DA:  MOVLW  07
-05DC:  ADDWF  18,W
-05DE:  MOVWF  FE9
-05E0:  MOVLW  00
-05E2:  ADDWFC 19,W
-05E4:  MOVWF  FEA
-05E6:  MOVFF  FEF,1A
-05EA:  MOVFF  1A,1C
-05EE:  RCALL  0498
-05F0:  MOVFF  01,1A
-05F4:  MOVLW  06
-05F6:  MOVWF  1B
-05F8:  MOVFF  01,1C
-05FC:  RCALL  03A4
+05E0:  MOVLW  07
+05E2:  ADDWF  18,W
+05E4:  MOVWF  FE9
+05E6:  MOVLW  00
+05E8:  ADDWFC 19,W
+05EA:  MOVWF  FEA
+05EC:  MOVFF  FEF,1A
+05F0:  MOVFF  1A,1C
+05F4:  RCALL  049C
+05F6:  MOVFF  01,1A
+05FA:  MOVLW  06
+05FC:  MOVWF  1B
+05FE:  MOVFF  01,1C
+0602:  RCALL  03A8
 .................... 	delay_ms(1); 
-05FE:  MOVLW  01
-0600:  MOVWF  24
-0602:  RCALL  0120
+0604:  MOVLW  01
+0606:  MOVWF  24
+0608:  RCALL  0120
 ....................  
 .................... 	writeReg(0x07, 0x00); 
-0604:  MOVLW  07
-0606:  MOVWF  1B
-0608:  CLRF   1C
-060A:  RCALL  03A4
+060A:  MOVLW  07
+060C:  MOVWF  1B
+060E:  CLRF   1C
+0610:  RCALL  03A8
 .................... } 
-060C:  GOTO   0A62 (RETURN)
+0612:  GOTO   0A68 (RETURN)
 ....................  
 .................... #endif /* CALENDARIO_H_ */ 
 ....................  
@@ -1141,87 +1142,90 @@ CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 14:51
 01D4:  MOVLW  01
 01D6:  MOVWF  24
 01D8:  RCALL  0120
+.................... 	output_d(0); 
+01DA:  CLRF   F95
+01DC:  CLRF   F8C
 .................... } 
-01DA:  RETURN 0
+01DE:  RETURN 0
 ....................  
 .................... void lcd_pos_xy(int x, int y) { 
 .................... 	int endereco; 
 .................... 	if (y != 1) 
 *
-08B4:  DECFSZ 20,W
-08B6:  BRA    08BA
-08B8:  BRA    08C0
+08BA:  DECFSZ 20,W
+08BC:  BRA    08C0
+08BE:  BRA    08C6
 .................... 		endereco = 0xc0; 
-08BA:  MOVLW  C0
-08BC:  MOVWF  21
-.................... 	else 
-08BE:  BRA    08C4
-.................... 		endereco = 0x80; 
-08C0:  MOVLW  80
+08C0:  MOVLW  C0
 08C2:  MOVWF  21
+.................... 	else 
+08C4:  BRA    08CA
+.................... 		endereco = 0x80; 
+08C6:  MOVLW  80
+08C8:  MOVWF  21
 .................... 	endereco += x - 1; 
-08C4:  MOVLW  01
-08C6:  SUBWF  1F,W
-08C8:  ADDWF  21,F
+08CA:  MOVLW  01
+08CC:  SUBWF  1F,W
+08CE:  ADDWF  21,F
 .................... 	lcd_envia_byte(0, endereco); 
-08CA:  CLRF   22
-08CC:  MOVFF  21,23
-08D0:  RCALL  01A2
+08D0:  CLRF   22
+08D2:  MOVFF  21,23
+08D6:  RCALL  01A2
 .................... } 
-08D2:  GOTO   091A (RETURN)
+08D8:  GOTO   0920 (RETURN)
 ....................  
 .................... void lcd(char c) { 
 .................... 	switch (c) { 
-08D6:  MOVF   1E,W
-08D8:  XORLW  0C
-08DA:  BZ    08EA
-08DC:  XORLW  06
-08DE:  BZ    08FA
-08E0:  XORLW  07
-08E2:  BZ    08FA
-08E4:  XORLW  05
-08E6:  BZ    0906
-08E8:  BRA    0910
+08DC:  MOVF   1E,W
+08DE:  XORLW  0C
+08E0:  BZ    08F0
+08E2:  XORLW  06
+08E4:  BZ    0900
+08E6:  XORLW  07
+08E8:  BZ    0900
+08EA:  XORLW  05
+08EC:  BZ    090C
+08EE:  BRA    0916
 .................... 	case '\f': 
 .................... 		lcd_envia_byte(0, 1);     // 0,1 
-08EA:  CLRF   22
-08EC:  MOVLW  01
-08EE:  MOVWF  23
-08F0:  RCALL  01A2
+08F0:  CLRF   22
+08F2:  MOVLW  01
+08F4:  MOVWF  23
+08F6:  RCALL  01A2
 .................... 		delay_ms(2); 
-08F2:  MOVLW  02
-08F4:  MOVWF  24
-08F6:  RCALL  0120
+08F8:  MOVLW  02
+08FA:  MOVWF  24
+08FC:  RCALL  0120
 .................... 		break; 
-08F8:  BRA    091A
+08FE:  BRA    0920
 .................... 	case '\n': 
 .................... 	case '\r': 
 .................... 		lcd_pos_xy(1, 2);      // 1,2  COLUNA,LINHA 
-08FA:  MOVLW  01
-08FC:  MOVWF  1F
-08FE:  MOVLW  02
-0900:  MOVWF  20
-0902:  BRA    08B4
+0900:  MOVLW  01
+0902:  MOVWF  1F
+0904:  MOVLW  02
+0906:  MOVWF  20
+0908:  BRA    08BA
 .................... 		break; 
-0904:  BRA    091A
+090A:  BRA    0920
 .................... 	case '\b': 
 .................... 		lcd_envia_byte(0, 0x10); 
-0906:  CLRF   22
-0908:  MOVLW  10
-090A:  MOVWF  23
-090C:  RCALL  01A2
+090C:  CLRF   22
+090E:  MOVLW  10
+0910:  MOVWF  23
+0912:  RCALL  01A2
 .................... 		break; 
-090E:  BRA    091A
+0914:  BRA    0920
 .................... 	default: 
 .................... 		lcd_envia_byte(1, c); 
-0910:  MOVLW  01
-0912:  MOVWF  22
-0914:  MOVFF  1E,23
-0918:  RCALL  01A2
+0916:  MOVLW  01
+0918:  MOVWF  22
+091A:  MOVFF  1E,23
+091E:  RCALL  01A2
 .................... 		break; 
 .................... 	} 
 .................... } 
-091A:  RETURN 0
+0920:  RETURN 0
 ....................  
 .................... void lcd_init() { 
 ....................  
@@ -1229,76 +1233,76 @@ CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 14:51
 ....................  
 .................... 	output_low(rs); 
 *
-01DC:  BCF    F96.0
-01DE:  BCF    F8D.0
+01E0:  BCF    F96.0
+01E2:  BCF    F8D.0
 .................... 	output_low(en); 
-01E0:  BCF    F96.1
-01E2:  BCF    F8D.1
+01E4:  BCF    F96.1
+01E6:  BCF    F8D.1
 .................... 	output_low(d4); 
-01E4:  BCF    F95.4
-01E6:  BCF    F8C.4
+01E8:  BCF    F95.4
+01EA:  BCF    F8C.4
 .................... 	output_low(d5); 
-01E8:  BCF    F95.5
-01EA:  BCF    F8C.5
+01EC:  BCF    F95.5
+01EE:  BCF    F8C.5
 .................... 	output_low(d6); 
-01EC:  BCF    F95.6
-01EE:  BCF    F8C.6
+01F0:  BCF    F95.6
+01F2:  BCF    F8C.6
 .................... 	output_low(d7); 
-01F0:  BCF    F95.7
-01F2:  BCF    F8C.7
+01F4:  BCF    F95.7
+01F6:  BCF    F8C.7
 ....................  
 .................... 	delay_ms(15); 
-01F4:  MOVLW  0F
-01F6:  MOVWF  24
-01F8:  RCALL  0120
+01F8:  MOVLW  0F
+01FA:  MOVWF  24
+01FC:  RCALL  0120
 ....................  
 .................... 	for (conta = 1; conta <= 3; conta++) { 
-01FA:  MOVLW  01
-01FC:  MOVWF  18
-01FE:  MOVF   18,W
-0200:  SUBLW  03
-0202:  BNC   0214
+01FE:  MOVLW  01
+0200:  MOVWF  18
+0202:  MOVF   18,W
+0204:  SUBLW  03
+0206:  BNC   0218
 .................... 		lcd_cmd(0x03); 
-0204:  MOVLW  03
-0206:  MOVWF  25
-0208:  RCALL  0148
+0208:  MOVLW  03
+020A:  MOVWF  25
+020C:  RCALL  0148
 .................... 		delay_ms(5); 
-020A:  MOVLW  05
-020C:  MOVWF  24
-020E:  RCALL  0120
+020E:  MOVLW  05
+0210:  MOVWF  24
+0212:  RCALL  0120
 .................... 	} 
-0210:  INCF   18,F
-0212:  BRA    01FE
+0214:  INCF   18,F
+0216:  BRA    0202
 .................... 	lcd_cmd(0x02);           //escreve comando para interface de 4 vias de dados 
-0214:  MOVLW  02
-0216:  MOVWF  25
-0218:  RCALL  0148
+0218:  MOVLW  02
+021A:  MOVWF  25
+021C:  RCALL  0148
 .................... 	lcd_envia_byte(0, 0x28); //escreve comando informando lcd de 2 linhas (5x7) em 4bits 
-021A:  CLRF   22
-021C:  MOVLW  28
-021E:  MOVWF  23
-0220:  RCALL  01A2
+021E:  CLRF   22
+0220:  MOVLW  28
+0222:  MOVWF  23
+0224:  RCALL  01A2
 .................... 	lcd_envia_byte(0, 0x0c); //escreve comando para limpar todo o display 
-0222:  CLRF   22
-0224:  MOVLW  0C
-0226:  MOVWF  23
-0228:  RCALL  01A2
+0226:  CLRF   22
+0228:  MOVLW  0C
+022A:  MOVWF  23
+022C:  RCALL  01A2
 .................... 	lcd_envia_byte(0, 0x01); //escreve comando para ligar o display **com cursor piscante 
-022A:  CLRF   22
-022C:  MOVLW  01
-022E:  MOVWF  23
-0230:  RCALL  01A2
+022E:  CLRF   22
+0230:  MOVLW  01
+0232:  MOVWF  23
+0234:  RCALL  01A2
 .................... 	lcd_envia_byte(0, 0x06); //escreve comando para incrementar automaticamente á direita 
-0232:  CLRF   22
-0234:  MOVLW  06
-0236:  MOVWF  23
-0238:  RCALL  01A2
+0236:  CLRF   22
+0238:  MOVLW  06
+023A:  MOVWF  23
+023C:  RCALL  01A2
 .................... 	delay_ms(5); 
-023A:  MOVLW  05
-023C:  MOVWF  24
-023E:  RCALL  0120
+023E:  MOVLW  05
+0240:  MOVWF  24
+0242:  RCALL  0120
 .................... } 
-0240:  GOTO   0A1E (RETURN)
+0244:  GOTO   0A24 (RETURN)
 ....................  
 ....................  
 ....................  
@@ -1306,391 +1310,391 @@ CCS PCH C Compiler, Version 4.140, 21898               29-jul-13 14:51
 ....................  
 .................... int main(void) { 
 *
-0A0A:  CLRF   FF8
-0A0C:  BCF    FD0.7
-0A0E:  CLRF   FEA
-0A10:  CLRF   FE9
-0A12:  BSF    FC1.0
-0A14:  BSF    FC1.1
-0A16:  BSF    FC1.2
-0A18:  BCF    FC1.3
+0A10:  CLRF   FF8
+0A12:  BCF    FD0.7
+0A14:  CLRF   FEA
+0A16:  CLRF   FE9
+0A18:  BSF    FC1.0
+0A1A:  BSF    FC1.1
+0A1C:  BSF    FC1.2
+0A1E:  BCF    FC1.3
 ....................  
 .................... 	int formato[4], AM_PM[3], diaSemana[4], aux; 
 ....................  
 .................... 	lcd_init(); 
-0A1A:  GOTO   01DC
+0A20:  GOTO   01E0
 .................... 	delay_ms(100); 
-0A1E:  MOVLW  64
-0A20:  MOVWF  24
-0A22:  CALL   0120
+0A24:  MOVLW  64
+0A26:  MOVWF  24
+0A28:  CALL   0120
 .................... 	initDS1307(); 
-0A26:  BRA    03FC
+0A2C:  BRA    0400
 ....................  
 .................... 	while (TRUE) { 
 ....................  
 .................... 		if (!input(PIN_B0)) { 
-0A28:  BSF    F93.0
-0A2A:  BTFSC  F81.0
-0A2C:  BRA    0A72
+0A2E:  BSF    F93.0
+0A30:  BTFSC  F81.0
+0A32:  BRA    0A78
 .................... 			delay_ms(100); 
-0A2E:  MOVLW  64
-0A30:  MOVWF  24
-0A32:  CALL   0120
+0A34:  MOVLW  64
+0A36:  MOVWF  24
+0A38:  CALL   0120
 .................... 			if (!input(PIN_B0)) { 
-0A36:  BSF    F93.0
-0A38:  BTFSC  F81.0
-0A3A:  BRA    0A72
+0A3C:  BSF    F93.0
+0A3E:  BTFSC  F81.0
+0A40:  BRA    0A78
 .................... 				calendario.segundos = 0; 
-0A3C:  CLRF   05
+0A42:  CLRF   05
 .................... 				calendario.minutos = 47; 
-0A3E:  MOVLW  2F
-0A40:  MOVWF  06
+0A44:  MOVLW  2F
+0A46:  MOVWF  06
 .................... 				calendario.horas = 14; 
-0A42:  MOVLW  0E
-0A44:  MOVWF  07
+0A48:  MOVLW  0E
+0A4A:  MOVWF  07
 .................... 				calendario.dow = seg; 
-0A46:  MOVLW  02
-0A48:  MOVWF  08
+0A4C:  MOVLW  02
+0A4E:  MOVWF  08
 .................... 				calendario.dia = 29; 
-0A4A:  MOVLW  1D
-0A4C:  MOVWF  09
+0A50:  MOVLW  1D
+0A52:  MOVWF  09
 .................... 				calendario.mes = 7; 
-0A4E:  MOVLW  07
-0A50:  MOVWF  0A
+0A54:  MOVLW  07
+0A56:  MOVWF  0A
 .................... 				calendario.ano = 13; 
-0A52:  MOVLW  0D
-0A54:  MOVWF  0B
+0A58:  MOVLW  0D
+0A5A:  MOVWF  0B
 .................... 				calendario._12h = 0; 
-0A56:  BCF    04.1
+0A5C:  BCF    04.1
 .................... 				calendario.am_pm = 0; 
-0A58:  BCF    04.0
+0A5E:  BCF    04.0
 .................... 				setDS1307(&calendario); 
-0A5A:  CLRF   19
-0A5C:  MOVLW  04
-0A5E:  MOVWF  18
-0A60:  BRA    04C0
-.................... 				delay_ms(500); 
-0A62:  MOVLW  02
+0A60:  CLRF   19
+0A62:  MOVLW  04
 0A64:  MOVWF  18
-0A66:  MOVLW  FA
-0A68:  MOVWF  24
-0A6A:  CALL   0120
-0A6E:  DECFSZ 18,F
-0A70:  BRA    0A66
+0A66:  BRA    04C4
+.................... 				delay_ms(500); 
+0A68:  MOVLW  02
+0A6A:  MOVWF  18
+0A6C:  MOVLW  FA
+0A6E:  MOVWF  24
+0A70:  CALL   0120
+0A74:  DECFSZ 18,F
+0A76:  BRA    0A6C
 .................... 			} 
 .................... 		} 
 ....................  
 .................... 		delay_ms(100); 
-0A72:  MOVLW  64
-0A74:  MOVWF  24
-0A76:  CALL   0120
+0A78:  MOVLW  64
+0A7A:  MOVWF  24
+0A7C:  CALL   0120
 .................... 		getDS1307(&calendario); 
-0A7A:  CLRF   19
-0A7C:  MOVLW  04
-0A7E:  MOVWF  18
-0A80:  BRA    07B6
+0A80:  CLRF   19
+0A82:  MOVLW  04
+0A84:  MOVWF  18
+0A86:  BRA    07BC
 ....................  
 .................... 		if (calendario._12h) { 
-0A82:  BTFSS  04.1
-0A84:  BRA    0AD6
+0A88:  BTFSS  04.1
+0A8A:  BRA    0ADC
 .................... 			strcpy(formato, "12h"); 
-0A86:  CLRF   FEA
-0A88:  MOVLW  0C
-0A8A:  MOVWF  FE9
-0A8C:  MOVLW  00
-0A8E:  CALL   0004
-0A92:  TBLRD*-
-0A94:  TBLRD*+
-0A96:  MOVF   FF5,W
-0A98:  MOVWF  FEE
-0A9A:  IORLW  00
-0A9C:  BNZ   0A94
+0A8C:  CLRF   FEA
+0A8E:  MOVLW  0C
+0A90:  MOVWF  FE9
+0A92:  MOVLW  00
+0A94:  CALL   0004
+0A98:  TBLRD*-
+0A9A:  TBLRD*+
+0A9C:  MOVF   FF5,W
+0A9E:  MOVWF  FEE
+0AA0:  IORLW  00
+0AA2:  BNZ   0A9A
 .................... 			if (calendario.am_pm) 
-0A9E:  BTFSS  04.0
-0AA0:  BRA    0ABC
+0AA4:  BTFSS  04.0
+0AA6:  BRA    0AC2
 .................... 				strcpy(AM_PM, "AM"); 
-0AA2:  CLRF   FEA
-0AA4:  MOVLW  10
-0AA6:  MOVWF  FE9
-0AA8:  MOVLW  00
-0AAA:  CALL   0018
-0AAE:  TBLRD*-
-0AB0:  TBLRD*+
-0AB2:  MOVF   FF5,W
-0AB4:  MOVWF  FEE
-0AB6:  IORLW  00
-0AB8:  BNZ   0AB0
+0AA8:  CLRF   FEA
+0AAA:  MOVLW  10
+0AAC:  MOVWF  FE9
+0AAE:  MOVLW  00
+0AB0:  CALL   0018
+0AB4:  TBLRD*-
+0AB6:  TBLRD*+
+0AB8:  MOVF   FF5,W
+0ABA:  MOVWF  FEE
+0ABC:  IORLW  00
+0ABE:  BNZ   0AB6
 .................... 			else 
-0ABA:  BRA    0AD4
+0AC0:  BRA    0ADA
 .................... 				strcpy(AM_PM, "PM"); 
-0ABC:  CLRF   FEA
-0ABE:  MOVLW  10
-0AC0:  MOVWF  FE9
-0AC2:  MOVLW  00
-0AC4:  CALL   002C
-0AC8:  TBLRD*-
-0ACA:  TBLRD*+
-0ACC:  MOVF   FF5,W
-0ACE:  MOVWF  FEE
-0AD0:  IORLW  00
-0AD2:  BNZ   0ACA
+0AC2:  CLRF   FEA
+0AC4:  MOVLW  10
+0AC6:  MOVWF  FE9
+0AC8:  MOVLW  00
+0ACA:  CALL   002C
+0ACE:  TBLRD*-
+0AD0:  TBLRD*+
+0AD2:  MOVF   FF5,W
+0AD4:  MOVWF  FEE
+0AD6:  IORLW  00
+0AD8:  BNZ   0AD0
 .................... 		} else { 
-0AD4:  BRA    0B06
+0ADA:  BRA    0B0C
 .................... 			strcpy(formato, "24h"); 
-0AD6:  CLRF   FEA
-0AD8:  MOVLW  0C
-0ADA:  MOVWF  FE9
-0ADC:  MOVLW  00
-0ADE:  CALL   0040
-0AE2:  TBLRD*-
-0AE4:  TBLRD*+
-0AE6:  MOVF   FF5,W
-0AE8:  MOVWF  FEE
-0AEA:  IORLW  00
-0AEC:  BNZ   0AE4
+0ADC:  CLRF   FEA
+0ADE:  MOVLW  0C
+0AE0:  MOVWF  FE9
+0AE2:  MOVLW  00
+0AE4:  CALL   0040
+0AE8:  TBLRD*-
+0AEA:  TBLRD*+
+0AEC:  MOVF   FF5,W
+0AEE:  MOVWF  FEE
+0AF0:  IORLW  00
+0AF2:  BNZ   0AEA
 .................... 			strcpy(AM_PM, "  "); 
-0AEE:  CLRF   FEA
-0AF0:  MOVLW  10
-0AF2:  MOVWF  FE9
-0AF4:  MOVLW  00
-0AF6:  CALL   0054
-0AFA:  TBLRD*-
-0AFC:  TBLRD*+
-0AFE:  MOVF   FF5,W
-0B00:  MOVWF  FEE
-0B02:  IORLW  00
-0B04:  BNZ   0AFC
+0AF4:  CLRF   FEA
+0AF6:  MOVLW  10
+0AF8:  MOVWF  FE9
+0AFA:  MOVLW  00
+0AFC:  CALL   0054
+0B00:  TBLRD*-
+0B02:  TBLRD*+
+0B04:  MOVF   FF5,W
+0B06:  MOVWF  FEE
+0B08:  IORLW  00
+0B0A:  BNZ   0B02
 .................... 		} 
 .................... 		AM_PM[2] = '\0'; 
-0B06:  CLRF   12
+0B0C:  CLRF   12
 .................... 		formato[3] = '\0'; 
-0B08:  CLRF   0F
+0B0E:  CLRF   0F
 ....................  
 .................... 		switch (calendario.dow) { 
-0B0A:  MOVF   08,W
-0B0C:  XORLW  01
-0B0E:  BZ    0B2A
-0B10:  XORLW  03
-0B12:  BZ    0B44
-0B14:  XORLW  01
-0B16:  BZ    0B5E
-0B18:  XORLW  07
-0B1A:  BZ    0B78
-0B1C:  XORLW  01
-0B1E:  BZ    0B92
-0B20:  XORLW  03
-0B22:  BZ    0BAC
-0B24:  XORLW  01
-0B26:  BZ    0BC6
-0B28:  BRA    0BE0
+0B10:  MOVF   08,W
+0B12:  XORLW  01
+0B14:  BZ    0B30
+0B16:  XORLW  03
+0B18:  BZ    0B4A
+0B1A:  XORLW  01
+0B1C:  BZ    0B64
+0B1E:  XORLW  07
+0B20:  BZ    0B7E
+0B22:  XORLW  01
+0B24:  BZ    0B98
+0B26:  XORLW  03
+0B28:  BZ    0BB2
+0B2A:  XORLW  01
+0B2C:  BZ    0BCC
+0B2E:  BRA    0BE6
 .................... 		case dom: 
 .................... 			strcpy(diaSemana, "DOM"); 
-0B2A:  CLRF   FEA
-0B2C:  MOVLW  13
-0B2E:  MOVWF  FE9
-0B30:  MOVLW  00
-0B32:  CALL   0068
-0B36:  TBLRD*-
-0B38:  TBLRD*+
-0B3A:  MOVF   FF5,W
-0B3C:  MOVWF  FEE
-0B3E:  IORLW  00
-0B40:  BNZ   0B38
+0B30:  CLRF   FEA
+0B32:  MOVLW  13
+0B34:  MOVWF  FE9
+0B36:  MOVLW  00
+0B38:  CALL   0068
+0B3C:  TBLRD*-
+0B3E:  TBLRD*+
+0B40:  MOVF   FF5,W
+0B42:  MOVWF  FEE
+0B44:  IORLW  00
+0B46:  BNZ   0B3E
 .................... 			break; 
-0B42:  BRA    0BF8
+0B48:  BRA    0BFE
 .................... 		case seg: 
 .................... 			strcpy(diaSemana, "SEG"); 
-0B44:  CLRF   FEA
-0B46:  MOVLW  13
-0B48:  MOVWF  FE9
-0B4A:  MOVLW  00
-0B4C:  CALL   007C
-0B50:  TBLRD*-
-0B52:  TBLRD*+
-0B54:  MOVF   FF5,W
-0B56:  MOVWF  FEE
-0B58:  IORLW  00
-0B5A:  BNZ   0B52
+0B4A:  CLRF   FEA
+0B4C:  MOVLW  13
+0B4E:  MOVWF  FE9
+0B50:  MOVLW  00
+0B52:  CALL   007C
+0B56:  TBLRD*-
+0B58:  TBLRD*+
+0B5A:  MOVF   FF5,W
+0B5C:  MOVWF  FEE
+0B5E:  IORLW  00
+0B60:  BNZ   0B58
 .................... 			break; 
-0B5C:  BRA    0BF8
+0B62:  BRA    0BFE
 .................... 		case ter: 
 .................... 			strcpy(diaSemana, "TER"); 
-0B5E:  CLRF   FEA
-0B60:  MOVLW  13
-0B62:  MOVWF  FE9
-0B64:  MOVLW  00
-0B66:  CALL   0090
-0B6A:  TBLRD*-
-0B6C:  TBLRD*+
-0B6E:  MOVF   FF5,W
-0B70:  MOVWF  FEE
-0B72:  IORLW  00
-0B74:  BNZ   0B6C
+0B64:  CLRF   FEA
+0B66:  MOVLW  13
+0B68:  MOVWF  FE9
+0B6A:  MOVLW  00
+0B6C:  CALL   0090
+0B70:  TBLRD*-
+0B72:  TBLRD*+
+0B74:  MOVF   FF5,W
+0B76:  MOVWF  FEE
+0B78:  IORLW  00
+0B7A:  BNZ   0B72
 .................... 			break; 
-0B76:  BRA    0BF8
+0B7C:  BRA    0BFE
 .................... 		case qua: 
 .................... 			strcpy(diaSemana, "QUA"); 
-0B78:  CLRF   FEA
-0B7A:  MOVLW  13
-0B7C:  MOVWF  FE9
-0B7E:  MOVLW  00
-0B80:  CALL   00A4
-0B84:  TBLRD*-
-0B86:  TBLRD*+
-0B88:  MOVF   FF5,W
-0B8A:  MOVWF  FEE
-0B8C:  IORLW  00
-0B8E:  BNZ   0B86
+0B7E:  CLRF   FEA
+0B80:  MOVLW  13
+0B82:  MOVWF  FE9
+0B84:  MOVLW  00
+0B86:  CALL   00A4
+0B8A:  TBLRD*-
+0B8C:  TBLRD*+
+0B8E:  MOVF   FF5,W
+0B90:  MOVWF  FEE
+0B92:  IORLW  00
+0B94:  BNZ   0B8C
 .................... 			break; 
-0B90:  BRA    0BF8
+0B96:  BRA    0BFE
 .................... 		case qui: 
 .................... 			strcpy(diaSemana, "QUI"); 
-0B92:  CLRF   FEA
-0B94:  MOVLW  13
-0B96:  MOVWF  FE9
-0B98:  MOVLW  00
-0B9A:  CALL   00B8
-0B9E:  TBLRD*-
-0BA0:  TBLRD*+
-0BA2:  MOVF   FF5,W
-0BA4:  MOVWF  FEE
-0BA6:  IORLW  00
-0BA8:  BNZ   0BA0
+0B98:  CLRF   FEA
+0B9A:  MOVLW  13
+0B9C:  MOVWF  FE9
+0B9E:  MOVLW  00
+0BA0:  CALL   00B8
+0BA4:  TBLRD*-
+0BA6:  TBLRD*+
+0BA8:  MOVF   FF5,W
+0BAA:  MOVWF  FEE
+0BAC:  IORLW  00
+0BAE:  BNZ   0BA6
 .................... 			break; 
-0BAA:  BRA    0BF8
+0BB0:  BRA    0BFE
 .................... 		case sex: 
 .................... 			strcpy(diaSemana, "SEX"); 
-0BAC:  CLRF   FEA
-0BAE:  MOVLW  13
-0BB0:  MOVWF  FE9
-0BB2:  MOVLW  00
-0BB4:  CALL   00CC
-0BB8:  TBLRD*-
-0BBA:  TBLRD*+
-0BBC:  MOVF   FF5,W
-0BBE:  MOVWF  FEE
-0BC0:  IORLW  00
-0BC2:  BNZ   0BBA
+0BB2:  CLRF   FEA
+0BB4:  MOVLW  13
+0BB6:  MOVWF  FE9
+0BB8:  MOVLW  00
+0BBA:  CALL   00CC
+0BBE:  TBLRD*-
+0BC0:  TBLRD*+
+0BC2:  MOVF   FF5,W
+0BC4:  MOVWF  FEE
+0BC6:  IORLW  00
+0BC8:  BNZ   0BC0
 .................... 			break; 
-0BC4:  BRA    0BF8
+0BCA:  BRA    0BFE
 .................... 		case sab: 
 .................... 			strcpy(diaSemana, "SAB"); 
-0BC6:  CLRF   FEA
-0BC8:  MOVLW  13
-0BCA:  MOVWF  FE9
-0BCC:  MOVLW  00
-0BCE:  CALL   00E0
-0BD2:  TBLRD*-
-0BD4:  TBLRD*+
-0BD6:  MOVF   FF5,W
-0BD8:  MOVWF  FEE
-0BDA:  IORLW  00
-0BDC:  BNZ   0BD4
+0BCC:  CLRF   FEA
+0BCE:  MOVLW  13
+0BD0:  MOVWF  FE9
+0BD2:  MOVLW  00
+0BD4:  CALL   00E0
+0BD8:  TBLRD*-
+0BDA:  TBLRD*+
+0BDC:  MOVF   FF5,W
+0BDE:  MOVWF  FEE
+0BE0:  IORLW  00
+0BE2:  BNZ   0BDA
 .................... 			break; 
-0BDE:  BRA    0BF8
+0BE4:  BRA    0BFE
 .................... 		default: 
 .................... 			strcpy(diaSemana, "ERR"); 
-0BE0:  CLRF   FEA
-0BE2:  MOVLW  13
-0BE4:  MOVWF  FE9
-0BE6:  MOVLW  00
-0BE8:  CALL   00F4
-0BEC:  TBLRD*-
-0BEE:  TBLRD*+
-0BF0:  MOVF   FF5,W
-0BF2:  MOVWF  FEE
-0BF4:  IORLW  00
-0BF6:  BNZ   0BEE
+0BE6:  CLRF   FEA
+0BE8:  MOVLW  13
+0BEA:  MOVWF  FE9
+0BEC:  MOVLW  00
+0BEE:  CALL   00F4
+0BF2:  TBLRD*-
+0BF4:  TBLRD*+
+0BF6:  MOVF   FF5,W
+0BF8:  MOVWF  FEE
+0BFA:  IORLW  00
+0BFC:  BNZ   0BF4
 .................... 			break; 
 .................... 		} 
 .................... 		diaSemana[3] = '\0'; 
-0BF8:  CLRF   16
+0BFE:  CLRF   16
 ....................  
 .................... 		if (aux != calendario.segundos) { 
-0BFA:  MOVF   05,W
-0BFC:  SUBWF  17,W
-0BFE:  BZ    0C9C
+0C00:  MOVF   05,W
+0C02:  SUBWF  17,W
+0C04:  BZ    0CA2
 .................... 			aux = calendario.segundos; 
-0C00:  MOVFF  05,17
+0C06:  MOVFF  05,17
 .................... 			printf(lcd, "\f%s %s  %02d:%02d:%02d", formato, AM_PM, 
 .................... 					calendario.horas, calendario.minutos, calendario.segundos); 
-0C04:  MOVLW  0C
-0C06:  MOVWF  1E
-0C08:  RCALL  08D6
-0C0A:  CLRF   FEA
-0C0C:  MOVLW  0C
-0C0E:  MOVWF  FE9
-0C10:  RCALL  091C
-0C12:  MOVLW  20
-0C14:  MOVWF  1E
-0C16:  RCALL  08D6
-0C18:  CLRF   FEA
-0C1A:  MOVLW  10
-0C1C:  MOVWF  FE9
-0C1E:  RCALL  091C
-0C20:  MOVLW  20
-0C22:  MOVWF  1E
-0C24:  RCALL  08D6
+0C0A:  MOVLW  0C
+0C0C:  MOVWF  1E
+0C0E:  RCALL  08DC
+0C10:  CLRF   FEA
+0C12:  MOVLW  0C
+0C14:  MOVWF  FE9
+0C16:  RCALL  0922
+0C18:  MOVLW  20
+0C1A:  MOVWF  1E
+0C1C:  RCALL  08DC
+0C1E:  CLRF   FEA
+0C20:  MOVLW  10
+0C22:  MOVWF  FE9
+0C24:  RCALL  0922
 0C26:  MOVLW  20
 0C28:  MOVWF  1E
-0C2A:  RCALL  08D6
-0C2C:  MOVFF  07,18
-0C30:  MOVLW  01
-0C32:  MOVWF  19
-0C34:  RCALL  0940
-0C36:  MOVLW  3A
-0C38:  MOVWF  1E
-0C3A:  RCALL  08D6
-0C3C:  MOVFF  06,18
-0C40:  MOVLW  01
-0C42:  MOVWF  19
-0C44:  RCALL  0940
-0C46:  MOVLW  3A
-0C48:  MOVWF  1E
-0C4A:  RCALL  08D6
-0C4C:  MOVFF  05,18
-0C50:  MOVLW  01
-0C52:  MOVWF  19
-0C54:  RCALL  0940
+0C2A:  RCALL  08DC
+0C2C:  MOVLW  20
+0C2E:  MOVWF  1E
+0C30:  RCALL  08DC
+0C32:  MOVFF  07,18
+0C36:  MOVLW  01
+0C38:  MOVWF  19
+0C3A:  RCALL  0946
+0C3C:  MOVLW  3A
+0C3E:  MOVWF  1E
+0C40:  RCALL  08DC
+0C42:  MOVFF  06,18
+0C46:  MOVLW  01
+0C48:  MOVWF  19
+0C4A:  RCALL  0946
+0C4C:  MOVLW  3A
+0C4E:  MOVWF  1E
+0C50:  RCALL  08DC
+0C52:  MOVFF  05,18
+0C56:  MOVLW  01
+0C58:  MOVWF  19
+0C5A:  RCALL  0946
 .................... 			printf(lcd, "\n%s     %02d/%02d/%02d", diaSemana, calendario.dia, 
 .................... 					calendario.mes, calendario.ano); 
-0C56:  MOVLW  0A
-0C58:  MOVWF  1E
-0C5A:  RCALL  08D6
-0C5C:  CLRF   FEA
-0C5E:  MOVLW  13
-0C60:  MOVWF  FE9
-0C62:  RCALL  091C
-0C64:  MOVLW  0B
-0C66:  MOVWF  FF6
-0C68:  MOVLW  01
-0C6A:  MOVWF  FF7
-0C6C:  MOVLW  05
-0C6E:  MOVWF  18
-0C70:  BRA    09EA
-0C72:  MOVFF  09,18
-0C76:  MOVLW  01
-0C78:  MOVWF  19
-0C7A:  RCALL  0940
-0C7C:  MOVLW  2F
-0C7E:  MOVWF  1E
-0C80:  RCALL  08D6
-0C82:  MOVFF  0A,18
-0C86:  MOVLW  01
-0C88:  MOVWF  19
-0C8A:  RCALL  0940
-0C8C:  MOVLW  2F
-0C8E:  MOVWF  1E
-0C90:  RCALL  08D6
-0C92:  MOVFF  0B,18
-0C96:  MOVLW  01
-0C98:  MOVWF  19
-0C9A:  RCALL  0940
+0C5C:  MOVLW  0A
+0C5E:  MOVWF  1E
+0C60:  RCALL  08DC
+0C62:  CLRF   FEA
+0C64:  MOVLW  13
+0C66:  MOVWF  FE9
+0C68:  RCALL  0922
+0C6A:  MOVLW  0B
+0C6C:  MOVWF  FF6
+0C6E:  MOVLW  01
+0C70:  MOVWF  FF7
+0C72:  MOVLW  05
+0C74:  MOVWF  18
+0C76:  BRA    09F0
+0C78:  MOVFF  09,18
+0C7C:  MOVLW  01
+0C7E:  MOVWF  19
+0C80:  RCALL  0946
+0C82:  MOVLW  2F
+0C84:  MOVWF  1E
+0C86:  RCALL  08DC
+0C88:  MOVFF  0A,18
+0C8C:  MOVLW  01
+0C8E:  MOVWF  19
+0C90:  RCALL  0946
+0C92:  MOVLW  2F
+0C94:  MOVWF  1E
+0C96:  RCALL  08DC
+0C98:  MOVFF  0B,18
+0C9C:  MOVLW  01
+0C9E:  MOVWF  19
+0CA0:  RCALL  0946
 .................... 		} 
 .................... 	} //infinite loop 
-0C9C:  BRA    0A28
+0CA2:  BRA    0A2E
 .................... } //main 
-0C9E:  SLEEP 
+0CA4:  SLEEP 
 
 Configuration Fuses:
    Word  1: 2600   H4 NOOSCSEN

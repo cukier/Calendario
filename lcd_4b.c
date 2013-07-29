@@ -22,6 +22,7 @@ void lcd_envia_byte(short endereco, int dado) {
 	lcd_cmd(dado >> 4);
 	lcd_cmd(dado & 0x0f);
 	delay_ms(1);
+	output_d(0);
 }
 
 void lcd_pos_xy(int x, int y) {
