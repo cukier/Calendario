@@ -9,7 +9,7 @@
 
 #fuses H4
 #use delay (crystal=10MHz, clock=40MHz)
-#use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7)
+//#use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7)
 #use i2c(master, sda=PIN_C4, scl=PIN_C3, fast=50000)
 
 #include"calendario.h"
@@ -20,27 +20,28 @@ struct cal calendario;
 int main(void) {
 
 	int formato[4], AM_PM[3], diaSemana[4];
+	short ack = 0;
 
 	lcd_init();
 	delay_ms(100);
-	if (initDS1307()) {
-		printf("Problema");
-	}
+	initDS1307();
 
 	while (TRUE) {
 
 		if (!input(PIN_B0)) {
 			delay_ms(100);
 			if (!input(PIN_B0)) {
+				calendario.segundos = 0;
+				calendario.minutos = 47;
+				calendario.horas = 14;
+				calendario.dow = seg;
+				calendario.dia = 29;
+				calendario.mes = 7;
+				calendario.ano = 13;
 				calendario._12h = 0;
 				calendario.am_pm = 0;
-				calendario.ano = 13;
-				calendario.dia = 29;
-				calendario.dow = seg;
-				calendario.horas = 07;
-				calendario.minutos = 26;
-				calendario.segundos = 0;
 				setDS1307(&calendario);
+				delay_ms(500);
 			}
 		}
 
@@ -60,7 +61,7 @@ int main(void) {
 		AM_PM[2] = '\0';
 		formato[3] = '\0';
 
-		switch (calendario.dow - 1) {
+		switch (calendario.dow) {
 		case dom:
 			strcpy(diaSemana, "DOM");
 			break;
@@ -92,5 +93,5 @@ int main(void) {
 				calendario.minutos, calendario.segundos);
 		printf(lcd, "\n%s     %02d/%02d/%02d", diaSemana, calendario.dia,
 				calendario.mes, calendario.ano);
-	}
-}
+	} //infinite loop
+} //main

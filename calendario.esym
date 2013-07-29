@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""4.140""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""29-jul-13""
-D G "__TIME__" 0 0 ""08:06:00"" "/*"
+D G "__TIME__" 0 0 ""14:46:39"" "/*"
 C G "" 0 2 1 "*"
 C G "" 0 4 1 "*"
 C G "" 0 5 1 "*"
@@ -237,19 +237,19 @@ D G "DS1307" 2 11 "0xD0"
 D G "sec_addr" 2 12 "0x00"
 D G "min_addr" 2 13 "0x01"
 D G "hour_addr" 2 14 "0x02"
-D G "day_addr" 2 15 "0x03"
+D G "dow_addr" 2 15 "0x03"
 D G "date_addr" 2 16 "0x04"
 D G "month_addr" 2 17 "0x05"
 D G "year_addr" 2 18 "0x06"
 D G "ctlr_addr" 2 19 "0x07"
 D G "debounce" 2 20 "100"
-E G "dom" 2 23 "0"
-E G "seg" 2 23 "1"
-E G "ter" 2 23 "2"
-E G "qua" 2 23 "3"
-E G "qui" 2 23 "4"
-E G "sex" 2 23 "5"
-E G "sab" 2 24 "6"
+E G "dom" 2 23 "1"
+E G "seg" 2 23 "2"
+E G "ter" 2 23 "3"
+E G "qua" 2 23 "4"
+E G "qui" 2 23 "5"
+E G "sex" 2 23 "6"
+E G "sab" 2 24 "7"
 V L "val" 2 31 "int8"
 F G "decToBcd" 2 31 "int8(int8 val)"
 V L "val" 2 35 "int8"
@@ -296,11 +296,16 @@ F G "getYear" 2 147 "int8()"
 F G "initDS1307" 2 151 "int8()"
 V L "aux" 2 152 "int8"
 V L "ack" 2 153 "int1"
-V L "calendario" 2 165 "*cal"
-F G "getDS1307" 2 165 "void(*cal calendario)"
-V L "aux" 2 166 "int8"
-V L "calen" 2 184 "*cal"
-F G "setDS1307" 2 184 "void(*cal calen)"
+C L "getDS1307" 2 1 17 "FUNCTION"
+V L "calendario" 2 184 "*cal"
+F G "getDS1307" 2 184 "void(*cal calendario)"
+V L "in" 2 194 "int8"
+F G "toBcd" 2 194 "int8(int8 in)"
+V L "unidade" 2 195 "int8"
+V L "dezena" 2 195 "int8"
+C L "setDS1307" 2 1 32 "FUNCTION"
+V L "calen" 2 244 "*cal"
+F G "setDS1307" 2 244 "void(*cal calen)"
 D G "rs" 3 1 "PIN_E0"
 D G "en" 3 2 "PIN_E1"
 D G "d4" 3 3 "PIN_D4"
@@ -332,6 +337,7 @@ F G "MAIN" 0 20 "int8()"
 V L "formato" 0 22 "int8[4]"
 V L "am_pm" 0 22 "int8[3]"
 V L "diaSemana" 0 22 "int8[4]"
+V L "ack" 0 23 "int1"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 0
@@ -461,13 +467,6 @@ F B "spi_write2" 1 0
 F B "spi_data_is_in2" 0 0
 F B "delay_ms" 1 0
 F B "delay_us" 1 0
-F B "putchar" 1 2
-F B "puts" 1 2
-F B "getch" 0 1
-F B "gets" 1 3
-F B "kbhit" 0 1
-F B "set_uart_speed" 1 3
-F B "setup_uart" 1 3
 F B "i2c_read" 0 2
 F B "i2c_write" 1 2
 F B "i2c_start" 0 2
