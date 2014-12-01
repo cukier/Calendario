@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.008, 5967               24-nov-14 16:43
+CCS PCH C Compiler, Version 5.008, 5967               25-nov-14 11:05
 
                Filename:   D:\Projetos\Calendario\calendario.lst
 
@@ -465,14 +465,14 @@ CCS PCH C Compiler, Version 5.008, 5967               24-nov-14 16:43
 .................... #define ctlr_addr	0x07 
 .................... #define debounce 	100 
 ....................  
-.................... enum { 
+.................... typedef enum dias_da_semana { 
 .................... 	dom = 1, seg, ter, qua, qui, sex, sab 
-.................... }; 
+.................... } dia_semana; 
 ....................  
-.................... struct cal { 
+.................... typedef struct str_cal { 
 .................... 	short am_pm, _12h; 
 .................... 	int segundos, minutos, horas, dow, dia, mes, ano; 
-.................... }; 
+.................... } cal_type; 
 ....................  
 .................... int decToBcd(int val) { 
 .................... 	return ((val / 10 * 16) + (val % 10)); 
@@ -975,7 +975,7 @@ CCS PCH C Compiler, Version 5.008, 5967               24-nov-14 16:43
 ....................  i2c_stop(); 
 ....................  }*/ 
 ....................  
-.................... void getDS1307(struct cal *calendario) { 
+.................... void getDS1307(cal_type *calendario) { 
 .................... 	calendario->segundos = getSec(); 
 *
 06E8:  MOVLW  01
@@ -1152,7 +1152,7 @@ CCS PCH C Compiler, Version 5.008, 5967               24-nov-14 16:43
 ....................  } 
 ....................  */ 
 ....................  
-.................... void setDS1307(struct cal *calen) { 
+.................... void setDS1307(cal_type *calen) { 
 ....................  
 .................... 	writeReg(sec_addr, toBcd(calen->segundos & 0x7F)); 
 03F0:  MOVLW  01
@@ -1333,7 +1333,7 @@ CCS PCH C Compiler, Version 5.008, 5967               24-nov-14 16:43
 .................... #endif /* CALENDARIO_H_ */ 
 ....................  
 ....................  
-.................... struct cal calendario; 
+.................... cal_type calendario; 
 ....................  
 .................... int main(void) { 
 *

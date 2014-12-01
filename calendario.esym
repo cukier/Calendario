@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.008""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""24-nov-14""
-D G "__TIME__" 0 0 ""16:43:21"" "/*"
+D G "__DATE__" 0 0 ""25-nov-14""
+D G "__TIME__" 0 0 ""11:05:19"" "/*"
 c L "set_tris_a" 0 2 1 "*"
 c L "set_tris_a" 0 4 1 "*"
 c L "set_tris_a" 0 5 1 "*"
@@ -1056,68 +1056,70 @@ E G "qua" 2 23 "4" `690
 E G "qui" 2 23 "5" `691 
 E G "sex" 2 23 "6" `692 
 E G "sab" 2 24 "7" `693 
-V L "val" 2 31 "int8" `705 
-F G "decToBcd" 2 31 "int8(int8 val)" `704 
-V L "val" 2 35 "int8" `710 
-F G "bcdToDec" 2 35 "int8(int8 val)" `709 
-V L "addr" 2 39 "int8" `712 
-F G "getReg" 2 39 "int8(int8 addr)" `711 
-V L "leitura" 2 40 "int8" `713 
-V L "addr" 2 53 "int8" `715 
-V L "dado" 2 53 "int8" `716 
-F G "writeReg" 2 53 "void(int8 addr,int8 dado)" `714 
-F G "pause" 2 61 "void()" `717 
-V L "aux" 2 62 "int8" `718 
-V L "in" 2 72 "int8" `720 
-F G "toSec" 2 72 "int8(int8 in)" `719 
-V L "lsb" 2 73 "int8" `721 
-V L "msb" 2 73 "int8" `722 
-V L "in" 2 81 "int8" `724 
-V L "am_pm" 2 81 "*int8" `725 
-V L "formato" 2 81 "*int8" `726 
-F G "toHour" 2 81 "int8(int8 in,*int8 am_pm,*int8 formato)" `723 
-V L "msb" 2 82 "int8" `727 
-V L "lsb" 2 82 "int8" `728 
-V L "in" 2 96 "int8" `730 
-F G "toDate" 2 96 "int8(int8 in)" `729 
-V L "msb" 2 97 "int8" `731 
-V L "lsb" 2 97 "int8" `732 
-V L "in" 2 105 "int8" `734 
-F G "toMonth" 2 105 "int8(int8 in)" `733 
-V L "lsb" 2 106 "int8" `735 
-V L "msb" 2 106 "int8" `736 
-V L "in" 2 114 "int8" `738 
-F G "toYear" 2 114 "int8(int8 in)" `737 
-V L "lsb" 2 115 "int8" `739 
-V L "msb" 2 115 "int8" `740 
-F G "getSec" 2 123 "int8()" `741 
-F G "getMin" 2 127 "int8()" `742 
-V L "am_pm" 2 131 "*int8" `744 
-V L "formato" 2 131 "*int8" `745 
-F G "getHour" 2 131 "int8(*int8 am_pm,*int8 formato)" `743 
-F G "getDayOfWeek" 2 135 "int8()" `746 
-F G "getDate" 2 139 "int8()" `747 
-F G "getMonth" 2 143 "int8()" `748 
-F G "getYear" 2 147 "int8()" `749 
-F G "initDS1307" 2 151 "int8()" `750 
-V L "aux" 2 152 "int8" `751 
-V L "ack" 2 153 "int1" `752 
+T G "dia_semana" 2 24 "dias_da_semana" `694 
+T G "cal_type" 2 29 "{int1 am_pm,int1 _12h,int8 segundos,int8 minutos,int8 horas,int8 dow,int8 dia,int8 mes,int8 ano}" `705 
+V L "val" 2 31 "int8" `707 
+F G "decToBcd" 2 31 "int8(int8 val)" `706 
+V L "val" 2 35 "int8" `712 
+F G "bcdToDec" 2 35 "int8(int8 val)" `711 
+V L "addr" 2 39 "int8" `714 
+F G "getReg" 2 39 "int8(int8 addr)" `713 
+V L "leitura" 2 40 "int8" `715 
+V L "addr" 2 53 "int8" `717 
+V L "dado" 2 53 "int8" `718 
+F G "writeReg" 2 53 "void(int8 addr,int8 dado)" `716 
+F G "pause" 2 61 "void()" `719 
+V L "aux" 2 62 "int8" `720 
+V L "in" 2 72 "int8" `722 
+F G "toSec" 2 72 "int8(int8 in)" `721 
+V L "lsb" 2 73 "int8" `723 
+V L "msb" 2 73 "int8" `724 
+V L "in" 2 81 "int8" `726 
+V L "am_pm" 2 81 "*int8" `727 
+V L "formato" 2 81 "*int8" `728 
+F G "toHour" 2 81 "int8(int8 in,*int8 am_pm,*int8 formato)" `725 
+V L "msb" 2 82 "int8" `729 
+V L "lsb" 2 82 "int8" `730 
+V L "in" 2 96 "int8" `732 
+F G "toDate" 2 96 "int8(int8 in)" `731 
+V L "msb" 2 97 "int8" `733 
+V L "lsb" 2 97 "int8" `734 
+V L "in" 2 105 "int8" `736 
+F G "toMonth" 2 105 "int8(int8 in)" `735 
+V L "lsb" 2 106 "int8" `737 
+V L "msb" 2 106 "int8" `738 
+V L "in" 2 114 "int8" `740 
+F G "toYear" 2 114 "int8(int8 in)" `739 
+V L "lsb" 2 115 "int8" `741 
+V L "msb" 2 115 "int8" `742 
+F G "getSec" 2 123 "int8()" `743 
+F G "getMin" 2 127 "int8()" `744 
+V L "am_pm" 2 131 "*int8" `746 
+V L "formato" 2 131 "*int8" `747 
+F G "getHour" 2 131 "int8(*int8 am_pm,*int8 formato)" `745 
+F G "getDayOfWeek" 2 135 "int8()" `748 
+F G "getDate" 2 139 "int8()" `749 
+F G "getMonth" 2 143 "int8()" `750 
+F G "getYear" 2 147 "int8()" `751 
+F G "initDS1307" 2 151 "int8()" `752 
+V L "aux" 2 152 "int8" `753 
+V L "ack" 2 153 "int1" `754 
 C L "getDS1307" 2 1 17 "FUNCTION"
-V L "calendario" 2 184 "*cal" `754 
-F G "getDS1307" 2 184 "void(*cal calendario)" `753 
-V L "in" 2 194 "int8" `756 
-F G "toBcd" 2 194 "int8(int8 in)" `755 
-V L "unidade" 2 195 "int8" `757 
-V L "dezena" 2 195 "int8" `758 
+V L "calendario" 2 184 "*cal_type" `756 
+F G "getDS1307" 2 184 "void(*cal_type calendario)" `755 
+V L "in" 2 194 "int8" `758 
+F G "toBcd" 2 194 "int8(int8 in)" `757 
+V L "unidade" 2 195 "int8" `759 
+V L "dezena" 2 195 "int8" `760 
 C L "setDS1307" 2 1 32 "FUNCTION"
-V L "calen" 2 244 "*cal" `760 
-F G "setDS1307" 2 244 "void(*cal calen)" `759 
-V G "calendario" 0 17 "{int1 am_pm,int1 _12h,int8 segundos,int8 minutos,int8 horas,int8 dow,int8 dia,int8 mes,int8 ano}" `761 
-F G "MAIN" 0 19 "int8()" `762 
-V L "formato" 0 21 "int8[4]" `763 
-V L "am_pm" 0 21 "int8[3]" `764 
-V L "diaSemana" 0 21 "int8[4]" `765 
-V L "aux" 0 21 "int8" `766 
+V L "calen" 2 244 "*cal_type" `762 
+F G "setDS1307" 2 244 "void(*cal_type calen)" `761 
+V G "calendario" 0 17 "cal_type" `763 
+F G "MAIN" 0 19 "int8()" `764 
+V L "formato" 0 21 "int8[4]" `765 
+V L "am_pm" 0 21 "int8[3]" `766 
+V L "diaSemana" 0 21 "int8[4]" `767 
+V L "aux" 0 21 "int8" `768 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

@@ -19,14 +19,14 @@
 #define ctlr_addr	0x07
 #define debounce 	100
 
-enum {
+typedef enum dias_da_semana {
 	dom = 1, seg, ter, qua, qui, sex, sab
-};
+} dia_semana;
 
-struct cal {
+typedef struct str_cal {
 	short am_pm, _12h;
 	int segundos, minutos, horas, dow, dia, mes, ano;
-};
+} cal_type;
 
 int decToBcd(int val) {
 	return ((val / 10 * 16) + (val % 10));
@@ -181,7 +181,7 @@ short initDS1307(void) {
  i2c_stop();
  }*/
 
-void getDS1307(struct cal *calendario) {
+void getDS1307(cal_type *calendario) {
 	calendario->segundos = getSec();
 	calendario->minutos = getMin();
 	calendario->horas = getHour(calendario.am_pm, calendario._12h);
@@ -241,7 +241,7 @@ int toBcd(int in) {
  }
  */
 
-void setDS1307(struct cal *calen) {
+void setDS1307(cal_type *calen) {
 
 	writeReg(sec_addr, toBcd(calen->segundos & 0x7F));
 	delay_ms(1);

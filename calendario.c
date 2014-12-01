@@ -14,7 +14,7 @@
 
 #include "calendario.h"
 
-struct cal calendario;
+cal_type calendario;
 
 int main(void) {
 
