@@ -5,9 +5,9 @@
 // *      Author: cuki
 // */
 
-#include<18F25K22.h>
+#include<18F252.h>
 
-#fuses HSH, NOPLLEN
+#fuses HS
 #use delay(crystal=15MHz)
 #use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7)
 #use i2c(master, sda=PIN_C4, scl=PIN_C3, fast=50000)

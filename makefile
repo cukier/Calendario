@@ -1,7 +1,7 @@
 CC=ccsc
 PK2=pk2cmd
 
-DEVICE=PIC18F25K22
+DEVICE=PIC18F252
 UNIT1=Calendario
 UNIT1_FILE=calendario
 
