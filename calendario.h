@@ -78,7 +78,7 @@ int toSec(int in) {
 	return 10 * msb + lsb;
 }
 
-int toHour(int in, short *AM_PM, short *formato) {
+int toHour(int in, short **AM_PM, short **formato) {
 	int msb, lsb;
 
 	*formato = bit_test(in, 6);
@@ -129,11 +129,56 @@ int getMin(void) {
 }
 
 int getHour(short *AM_PM, short *formato) {
-	return toHour(getReg(hour_addr), *AM_PM, *formato);
+	return toHour(getReg(hour_addr), &AM_PM, &formato);
 }
 
 int getDayOfWeek(void) {
 	return getReg(dow_addr) & 0x07;
+}
+
+int getDayofWeekExt(int *str, cal_type *calendario) {
+
+	switch (calendario->dow) {
+	case dom:
+		strcpy(str, "DOM");
+		break;
+	case seg:
+		strcpy(str, "SEG");
+		break;
+	case ter:
+		strcpy(str, "TER");
+		break;
+	case qua:
+		strcpy(str, "QUA");
+		break;
+	case qui:
+		strcpy(str, "QUI");
+		break;
+	case sex:
+		strcpy(str, "SEX");
+		break;
+	case sab:
+		strcpy(str, "SAB");
+		break;
+	default:
+		strcpy(str, "ERR");
+		break;
+	}
+
+	return getDayOfWeek();
+}
+
+void getFormato(int *formato, int *AM_PM, cal_type *calendario) {
+	if (calendario->_12h) {
+		strcpy(formato, "12h");
+		if (calendario->am_pm)
+			strcpy(AM_PM, "AM");
+		else
+			strcpy(AM_PM, "PM");
+	} else {
+		strcpy(formato, "24h");
+		strcpy(AM_PM, "  ");
+	}
 }
 
 int getDate(void) {
@@ -162,29 +207,10 @@ short initDS1307(void) {
 	return ack;
 }
 
-/*void getDS1307(struct cal *calendario) {
- int aux;
-
- i2c_start();
- i2c_write(DS1307);
- i2c_write(sec_addr);
- i2c_start();
- i2c_write(DS1307 + 1);
- calendario->segundos = toSec(i2c_read());
- calendario->minutos = toSec(i2c_read());
- calendario->horas = toHour(i2c_read(), calendario->am_pm, calendario->_12h);
- calendario->horas = bcdToDec(i2c_read() & 0x63);
- calendario->dow = i2c_read() & 0x07;
- calendario->dia = toDate(i2c_read());
- calendario->mes = toMonth(i2c_read());
- calendario->ano = toYear(i2c_read(0));
- i2c_stop();
- }*/
-
 void getDS1307(cal_type *calendario) {
 	calendario->segundos = getSec();
 	calendario->minutos = getMin();
-	calendario->horas = getHour(calendario.am_pm, calendario._12h);
+	calendario->horas = getHour(calendario->am_pm, calendario->_12h);
 	calendario->dow = getDayOfWeek();
 	calendario->dia = getDate();
 	calendario->mes = getMonth();
@@ -199,47 +225,6 @@ int toBcd(int in) {
 
 	return (dezena << 4) | unidade;
 }
-
-/*void setDS1307(struct cal *calen) {
- int hor;
-
- hor = ((int) calen->_12h << 5) | ((int) calen->am_pm << 5)
- | toBcd(calen->horas & 0x3F);
-
- i2c_start();
- i2c_write(DS1307);
- i2c_write(0x02); //endereco registrador horas
- i2c_write(hor);
- i2c_stop();
- }*/
-
-/*
- void setDS1307(struct cal *calen) {
- int segun, minu, hor, diasemana, diames, mes2, ano2;
-
- segun = toBcd(calen->segundos & 0x7F);
- minu = toBcd(calen->minutos & 0x7F);
- hor = ((int) calen->_12h << 5) | ((int) calen->am_pm << 5)
- | toBcd(calen->horas & 0x3F);
- diasemana = calen->dow & 0x07;
- diames = toBcd(calen->dia & 0x3F);
- mes2 = toBcd(calen->mes & 0x1F);
- ano2 = toBcd(calen->ano);
-
- i2c_start();
- i2c_write(DS1307);
- i2c_write(sec_addr);
- i2c_write(segun);
- i2c_write(minu);
- i2c_write(hor);
- i2c_write(diasemana);
- i2c_write(diames);
- i2c_write(mes2);
- i2c_write(ano2);
- i2c_write(0);
- i2c_stop();
- }
- */
 
 void setDS1307(cal_type *calen) {
 

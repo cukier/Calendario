@@ -1,8 +1,8 @@
 [PROJECT]
 Target=calendario.hex
-Processor_Text=PIC18F252
+Processor_Text=PIC16F628A
 CCSVersion=5.008
-Compiler=PCH
+Compiler=PCM
 [Target Data]
 FileList=calendario.c
 [Directories]

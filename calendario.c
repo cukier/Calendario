@@ -5,25 +5,22 @@
 // *      Author: cuki
 // */
 
-#include<18F252.h>
+#include<16F628A.h>
 
-#fuses HS
-#use delay(crystal=15MHz)
-#use rs232(baud=9600,xmit=PIN_C6,rcv=PIN_C7)
-#use i2c(master, sda=PIN_C4, scl=PIN_C3, fast=50000)
+#fuses INTRC_IO
+#use delay(clock=4MHz)
+#use rs232(baud=9600,xmit=PIN_B2)
+#use i2c(master, sda=PIN_B4, scl=PIN_B5, fast=50000, force_sw)
 
 #include "calendario.h"
 
 cal_type calendario;
+int formato[4], AM_PM[3], diaSemana[4], aux;
 
 int main(void) {
 
-	int formato[4], AM_PM[3], diaSemana[4], aux;
-
 	delay_ms(100);
 	initDS1307();
-	delay_ms(1000);
-	printf("\fHello");
 
 	while (TRUE) {
 
@@ -31,12 +28,12 @@ int main(void) {
 			delay_ms(100);
 			if (!input(PIN_B0)) {
 				calendario.segundos = 0;
-				calendario.minutos = 44;
+				calendario.minutos = 03;
 				calendario.horas = 16;
-				calendario.dow = seg;
-				calendario.dia = 24;
-				calendario.mes = 11;
-				calendario.ano = 14;
+				calendario.dow = sex;
+				calendario.dia = 27;
+				calendario.mes = 1;
+				calendario.ano = 15;
 				calendario._12h = 0;
 				calendario.am_pm = 0;
 				setDS1307(&calendario);
@@ -47,45 +44,12 @@ int main(void) {
 		delay_ms(100);
 		getDS1307(&calendario);
 
-		if (calendario._12h) {
-			strcpy(formato, "12h");
-			if (calendario.am_pm)
-				strcpy(AM_PM, "AM");
-			else
-				strcpy(AM_PM, "PM");
-		} else {
-			strcpy(formato, "24h");
-			strcpy(AM_PM, "  ");
-		}
+		getFormato(formato, AM_PM, &calendario);
+
 		AM_PM[2] = '\0';
 		formato[3] = '\0';
 
-		switch (calendario.dow) {
-		case dom:
-			strcpy(diaSemana, "DOM");
-			break;
-		case seg:
-			strcpy(diaSemana, "SEG");
-			break;
-		case ter:
-			strcpy(diaSemana, "TER");
-			break;
-		case qua:
-			strcpy(diaSemana, "QUA");
-			break;
-		case qui:
-			strcpy(diaSemana, "QUI");
-			break;
-		case sex:
-			strcpy(diaSemana, "SEX");
-			break;
-		case sab:
-			strcpy(diaSemana, "SAB");
-			break;
-		default:
-			strcpy(diaSemana, "ERR");
-			break;
-		}
+		getDayofWeekExt(diaSemana, &calendario);
 		diaSemana[3] = '\0';
 
 		if (aux != calendario.segundos) {
@@ -94,6 +58,7 @@ int main(void) {
 					calendario.minutos, calendario.segundos);
 			printf("\n%s     %02d/%02d/%02d", diaSemana, calendario.dia,
 					calendario.mes, calendario.ano);
+			printf("\r");
 		}
 //		delay_ms(1000);
 	} //infinite loop
