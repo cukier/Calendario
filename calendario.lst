@@ -1,9 +1,9 @@
-CCS PCM C Compiler, Version 5.008, 5967               27-fev-15 17:01
+CCS PCM C Compiler, Version 5.008, 5967               02-mar-15 13:26
 
                Filename:   D:\Projetos\Calendario\calendario.lst
 
-               ROM used:   1638 words (80%)
-                           Largest free fragment is 410
+               ROM used:   1634 words (80%)
+                           Largest free fragment is 414
                RAM used:   29 (13%) at main() level
                            45 (20%) worst case
                Stack used: 4 locations
@@ -1096,7 +1096,7 @@ CCS PCM C Compiler, Version 5.008, 5967               27-fev-15 17:01
 .................... 	return getDayOfWeek(); 
 0502:  CALL   2A5
 0503:  MOVF   78,W
-0504:  GOTO   5CE (RETURN)
+0504:  GOTO   5CD (RETURN)
 .................... } 
 ....................  
 .................... void getFormato(int *formato, int *AM_PM, cal_type *calendario) { 
@@ -1217,7 +1217,7 @@ CCS PCM C Compiler, Version 5.008, 5967               27-fev-15 17:01
 044B:  INCF   3A,F
 044C:  GOTO   43D
 .................... 	} 
-044D:  GOTO   5C5 (RETURN)
+044D:  GOTO   5C4 (RETURN)
 .................... } 
 ....................  
 .................... int getDate(void) { 
@@ -1494,7 +1494,7 @@ CCS PCM C Compiler, Version 5.008, 5967               27-fev-15 17:01
 03DF:  BSF    03.7
 03E0:  MOVF   78,W
 03E1:  MOVWF  00
-03E2:  GOTO   5BB (RETURN)
+03E2:  GOTO   5BA (RETURN)
 .................... } 
 ....................  
 .................... int toBcd(int in) { 
@@ -1724,7 +1724,7 @@ CCS PCM C Compiler, Version 5.008, 5967               27-fev-15 17:01
 028E:  MOVWF  37
 028F:  CLRF   38
 0290:  CALL   13C
-0291:  GOTO   5AD (RETURN)
+0291:  GOTO   5AC (RETURN)
 .................... } 
 ....................  
 .................... #endif /* CALENDARIO_H_ */ 
@@ -1761,7 +1761,7 @@ CCS PCM C Compiler, Version 5.008, 5967               27-fev-15 17:01
 058E:  BSF    06.0
 058F:  BCF    03.5
 0590:  BTFSC  06.0
-0591:  GOTO   5B4
+0591:  GOTO   5B3
 .................... 			delay_ms(100); 
 0592:  MOVLW  64
 0593:  MOVWF  36
@@ -1771,248 +1771,243 @@ CCS PCM C Compiler, Version 5.008, 5967               27-fev-15 17:01
 0596:  BSF    06.0
 0597:  BCF    03.5
 0598:  BTFSC  06.0
-0599:  GOTO   5B4
+0599:  GOTO   5B3
 .................... 				calendario.segundos = 0; 
 059A:  CLRF   21
-.................... 				calendario.minutos = 03; 
-059B:  MOVLW  03
+.................... 				calendario.minutos = 26; 
+059B:  MOVLW  1A
 059C:  MOVWF  22
-.................... 				calendario.horas = 16; 
-059D:  MOVLW  10
+.................... 				calendario.horas = 13; 
+059D:  MOVLW  0D
 059E:  MOVWF  23
-.................... 				calendario.dow = sex; 
-059F:  MOVLW  06
+.................... 				calendario.dow = seg; 
+059F:  MOVLW  02
 05A0:  MOVWF  24
-.................... 				calendario.dia = 27; 
-05A1:  MOVLW  1B
-05A2:  MOVWF  25
-.................... 				calendario.mes = 1; 
-05A3:  MOVLW  01
-05A4:  MOVWF  26
+.................... 				calendario.dia = 2; 
+05A1:  MOVWF  25
+.................... 				calendario.mes = 3; 
+05A2:  MOVLW  03
+05A3:  MOVWF  26
 .................... 				calendario.ano = 15; 
-05A5:  MOVLW  0F
-05A6:  MOVWF  27
+05A4:  MOVLW  0F
+05A5:  MOVWF  27
 .................... 				calendario._12h = 0; 
-05A7:  BCF    20.1
+05A6:  BCF    20.1
 .................... 				calendario.am_pm = 0; 
-05A8:  BCF    20.0
+05A7:  BCF    20.0
 .................... 				setDS1307(&calendario); 
-05A9:  CLRF   35
-05AA:  MOVLW  20
-05AB:  MOVWF  34
-05AC:  GOTO   1E9
+05A8:  CLRF   35
+05A9:  MOVLW  20
+05AA:  MOVWF  34
+05AB:  GOTO   1E9
 .................... 				delay_ms(500); 
-05AD:  MOVLW  02
-05AE:  MOVWF  34
-05AF:  MOVLW  FA
-05B0:  MOVWF  36
-05B1:  CALL   084
-05B2:  DECFSZ 34,F
-05B3:  GOTO   5AF
+05AC:  MOVLW  02
+05AD:  MOVWF  34
+05AE:  MOVLW  FA
+05AF:  MOVWF  36
+05B0:  CALL   084
+05B1:  DECFSZ 34,F
+05B2:  GOTO   5AE
 .................... 			} 
 .................... 		} 
 ....................  
 .................... 		delay_ms(100); 
-05B4:  MOVLW  64
-05B5:  MOVWF  36
-05B6:  CALL   084
+05B3:  MOVLW  64
+05B4:  MOVWF  36
+05B5:  CALL   084
 .................... 		getDS1307(&calendario); 
-05B7:  CLRF   35
-05B8:  MOVLW  20
-05B9:  MOVWF  34
-05BA:  GOTO   2AC
+05B6:  CLRF   35
+05B7:  MOVLW  20
+05B8:  MOVWF  34
+05B9:  GOTO   2AC
 ....................  
 .................... 		getFormato(formato, AM_PM, &calendario); 
-05BB:  CLRF   35
-05BC:  MOVLW  28
-05BD:  MOVWF  34
-05BE:  CLRF   37
-05BF:  MOVLW  2C
-05C0:  MOVWF  36
-05C1:  CLRF   39
-05C2:  MOVLW  20
-05C3:  MOVWF  38
-05C4:  GOTO   3E3
+05BA:  CLRF   35
+05BB:  MOVLW  28
+05BC:  MOVWF  34
+05BD:  CLRF   37
+05BE:  MOVLW  2C
+05BF:  MOVWF  36
+05C0:  CLRF   39
+05C1:  MOVLW  20
+05C2:  MOVWF  38
+05C3:  GOTO   3E3
 ....................  
 .................... 		AM_PM[2] = '\0'; 
-05C5:  CLRF   2E
+05C4:  CLRF   2E
 .................... 		formato[3] = '\0'; 
-05C6:  CLRF   2B
+05C5:  CLRF   2B
 ....................  
 .................... 		getDayofWeekExt(diaSemana, &calendario); 
-05C7:  CLRF   35
-05C8:  MOVLW  2F
-05C9:  MOVWF  34
-05CA:  CLRF   37
-05CB:  MOVLW  20
-05CC:  MOVWF  36
-05CD:  GOTO   44E
+05C6:  CLRF   35
+05C7:  MOVLW  2F
+05C8:  MOVWF  34
+05C9:  CLRF   37
+05CA:  MOVLW  20
+05CB:  MOVWF  36
+05CC:  GOTO   44E
 .................... 		diaSemana[3] = '\0'; 
-05CE:  CLRF   32
+05CD:  CLRF   32
 ....................  
 .................... 		if (aux != calendario.segundos) { 
-05CF:  MOVF   21,W
-05D0:  SUBWF  33,W
-05D1:  BTFSC  03.2
-05D2:  GOTO   662
+05CE:  MOVF   21,W
+05CF:  SUBWF  33,W
+05D0:  BTFSC  03.2
+05D1:  GOTO   65E
 .................... 			aux = calendario.segundos; 
-05D3:  MOVF   21,W
-05D4:  MOVWF  33
+05D2:  MOVF   21,W
+05D3:  MOVWF  33
 .................... 			printf("\f%s %s  %02d:%02d:%02d", formato, AM_PM, calendario.horas, 
 .................... 					calendario.minutos, calendario.segundos); 
-05D5:  MOVLW  0C
-05D6:  MOVWF  3E
-05D7:  CALL   505
-05D8:  MOVLW  28
-05D9:  MOVWF  04
-05DA:  BCF    03.7
-05DB:  MOVLW  00
-05DC:  IORWF  00,W
-05DD:  BTFSC  03.2
-05DE:  GOTO   5EF
-05DF:  CLRF   35
-05E0:  MOVF   04,W
-05E1:  MOVWF  34
-05E2:  BCF    35.0
-05E3:  BTFSC  03.7
-05E4:  BSF    35.0
-05E5:  MOVF   00,W
-05E6:  MOVWF  3E
-05E7:  CALL   505
-05E8:  MOVF   34,W
-05E9:  MOVWF  04
-05EA:  BCF    03.7
-05EB:  BTFSC  35.0
-05EC:  BSF    03.7
-05ED:  INCF   04,F
-05EE:  GOTO   5DB
-05EF:  MOVLW  20
-05F0:  MOVWF  3E
-05F1:  CALL   505
-05F2:  MOVLW  2C
-05F3:  MOVWF  04
-05F4:  BCF    03.7
-05F5:  MOVLW  00
-05F6:  IORWF  00,W
-05F7:  BTFSC  03.2
-05F8:  GOTO   609
-05F9:  CLRF   37
-05FA:  MOVF   04,W
-05FB:  MOVWF  36
-05FC:  BCF    37.0
-05FD:  BTFSC  03.7
-05FE:  BSF    37.0
-05FF:  MOVF   00,W
-0600:  MOVWF  3E
-0601:  CALL   505
-0602:  MOVF   36,W
-0603:  MOVWF  04
-0604:  BCF    03.7
-0605:  BTFSC  37.0
-0606:  BSF    03.7
-0607:  INCF   04,F
-0608:  GOTO   5F5
-0609:  MOVLW  20
-060A:  MOVWF  3E
-060B:  CALL   505
-060C:  MOVLW  20
-060D:  MOVWF  3E
-060E:  CALL   505
-060F:  MOVF   23,W
-0610:  MOVWF  38
-0611:  MOVLW  01
-0612:  MOVWF  39
-0613:  CALL   527
-0614:  MOVLW  3A
-0615:  MOVWF  3E
-0616:  CALL   505
-0617:  MOVF   22,W
-0618:  MOVWF  38
-0619:  MOVLW  01
-061A:  MOVWF  39
-061B:  CALL   527
-061C:  MOVLW  3A
-061D:  MOVWF  3E
-061E:  CALL   505
-061F:  MOVF   21,W
-0620:  MOVWF  38
-0621:  MOVLW  01
-0622:  MOVWF  39
-0623:  CALL   527
+05D4:  MOVLW  0C
+05D5:  MOVWF  3E
+05D6:  CALL   505
+05D7:  MOVLW  28
+05D8:  MOVWF  04
+05D9:  BCF    03.7
+05DA:  MOVLW  00
+05DB:  IORWF  00,W
+05DC:  BTFSC  03.2
+05DD:  GOTO   5EE
+05DE:  CLRF   35
+05DF:  MOVF   04,W
+05E0:  MOVWF  34
+05E1:  BCF    35.0
+05E2:  BTFSC  03.7
+05E3:  BSF    35.0
+05E4:  MOVF   00,W
+05E5:  MOVWF  3E
+05E6:  CALL   505
+05E7:  MOVF   34,W
+05E8:  MOVWF  04
+05E9:  BCF    03.7
+05EA:  BTFSC  35.0
+05EB:  BSF    03.7
+05EC:  INCF   04,F
+05ED:  GOTO   5DA
+05EE:  MOVLW  20
+05EF:  MOVWF  3E
+05F0:  CALL   505
+05F1:  MOVLW  2C
+05F2:  MOVWF  04
+05F3:  BCF    03.7
+05F4:  MOVLW  00
+05F5:  IORWF  00,W
+05F6:  BTFSC  03.2
+05F7:  GOTO   608
+05F8:  CLRF   37
+05F9:  MOVF   04,W
+05FA:  MOVWF  36
+05FB:  BCF    37.0
+05FC:  BTFSC  03.7
+05FD:  BSF    37.0
+05FE:  MOVF   00,W
+05FF:  MOVWF  3E
+0600:  CALL   505
+0601:  MOVF   36,W
+0602:  MOVWF  04
+0603:  BCF    03.7
+0604:  BTFSC  37.0
+0605:  BSF    03.7
+0606:  INCF   04,F
+0607:  GOTO   5F4
+0608:  MOVLW  20
+0609:  MOVWF  3E
+060A:  CALL   505
+060B:  MOVLW  20
+060C:  MOVWF  3E
+060D:  CALL   505
+060E:  MOVF   23,W
+060F:  MOVWF  38
+0610:  MOVLW  01
+0611:  MOVWF  39
+0612:  CALL   527
+0613:  MOVLW  3A
+0614:  MOVWF  3E
+0615:  CALL   505
+0616:  MOVF   22,W
+0617:  MOVWF  38
+0618:  MOVLW  01
+0619:  MOVWF  39
+061A:  CALL   527
+061B:  MOVLW  3A
+061C:  MOVWF  3E
+061D:  CALL   505
+061E:  MOVF   21,W
+061F:  MOVWF  38
+0620:  MOVLW  01
+0621:  MOVWF  39
+0622:  CALL   527
 .................... 			printf("\n%s     %02d/%02d/%02d", diaSemana, calendario.dia, 
 .................... 					calendario.mes, calendario.ano); 
-0624:  MOVLW  0A
-0625:  MOVWF  3E
-0626:  CALL   505
-0627:  MOVLW  2F
-0628:  MOVWF  04
-0629:  BCF    03.7
-062A:  MOVLW  00
-062B:  IORWF  00,W
-062C:  BTFSC  03.2
-062D:  GOTO   63E
-062E:  CLRF   35
-062F:  MOVF   04,W
-0630:  MOVWF  34
-0631:  BCF    35.0
-0632:  BTFSC  03.7
-0633:  BSF    35.0
-0634:  MOVF   00,W
-0635:  MOVWF  3E
-0636:  CALL   505
-0637:  MOVF   34,W
-0638:  MOVWF  04
-0639:  BCF    03.7
-063A:  BTFSC  35.0
-063B:  BSF    03.7
-063C:  INCF   04,F
-063D:  GOTO   62A
-063E:  MOVLW  03
-063F:  MOVWF  36
-0640:  MOVF   36,W
-0641:  CALL   069
-0642:  INCF   36,F
-0643:  MOVWF  77
-0644:  MOVWF  3E
-0645:  CALL   505
-0646:  MOVLW  08
-0647:  SUBWF  36,W
-0648:  BTFSS  03.2
-0649:  GOTO   640
-064A:  MOVF   25,W
-064B:  MOVWF  38
-064C:  MOVLW  01
-064D:  MOVWF  39
-064E:  CALL   527
-064F:  MOVLW  2F
-0650:  MOVWF  3E
-0651:  CALL   505
-0652:  MOVF   26,W
-0653:  MOVWF  38
-0654:  MOVLW  01
-0655:  MOVWF  39
-0656:  CALL   527
-0657:  MOVLW  2F
-0658:  MOVWF  3E
-0659:  CALL   505
-065A:  MOVF   27,W
-065B:  MOVWF  38
-065C:  MOVLW  01
-065D:  MOVWF  39
-065E:  CALL   527
-.................... 			printf("\r"); 
-065F:  MOVLW  0D
-0660:  MOVWF  3E
-0661:  CALL   505
+0623:  MOVLW  0A
+0624:  MOVWF  3E
+0625:  CALL   505
+0626:  MOVLW  2F
+0627:  MOVWF  04
+0628:  BCF    03.7
+0629:  MOVLW  00
+062A:  IORWF  00,W
+062B:  BTFSC  03.2
+062C:  GOTO   63D
+062D:  CLRF   35
+062E:  MOVF   04,W
+062F:  MOVWF  34
+0630:  BCF    35.0
+0631:  BTFSC  03.7
+0632:  BSF    35.0
+0633:  MOVF   00,W
+0634:  MOVWF  3E
+0635:  CALL   505
+0636:  MOVF   34,W
+0637:  MOVWF  04
+0638:  BCF    03.7
+0639:  BTFSC  35.0
+063A:  BSF    03.7
+063B:  INCF   04,F
+063C:  GOTO   629
+063D:  MOVLW  03
+063E:  MOVWF  36
+063F:  MOVF   36,W
+0640:  CALL   069
+0641:  INCF   36,F
+0642:  MOVWF  77
+0643:  MOVWF  3E
+0644:  CALL   505
+0645:  MOVLW  08
+0646:  SUBWF  36,W
+0647:  BTFSS  03.2
+0648:  GOTO   63F
+0649:  MOVF   25,W
+064A:  MOVWF  38
+064B:  MOVLW  01
+064C:  MOVWF  39
+064D:  CALL   527
+064E:  MOVLW  2F
+064F:  MOVWF  3E
+0650:  CALL   505
+0651:  MOVF   26,W
+0652:  MOVWF  38
+0653:  MOVLW  01
+0654:  MOVWF  39
+0655:  CALL   527
+0656:  MOVLW  2F
+0657:  MOVWF  3E
+0658:  CALL   505
+0659:  MOVF   27,W
+065A:  MOVWF  38
+065B:  MOVLW  01
+065C:  MOVWF  39
+065D:  CALL   527
 .................... 		} 
-0662:  GOTO   58D
+065E:  GOTO   58D
 .................... //		delay_ms(1000); 
 .................... 	} //infinite loop 
 .................... 	return 0; 
-0663:  MOVLW  00
-0664:  MOVWF  78
+065F:  MOVLW  00
+0660:  MOVWF  78
 .................... } //main 
-0665:  SLEEP
+0661:  SLEEP
 
 Configuration Fuses:
    Word  1: 3F70   NOWDT PUT INTRC_IO MCLR BROWNOUT NOLVP NOCPD NOPROTECT

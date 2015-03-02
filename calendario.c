@@ -28,11 +28,11 @@ int main(void) {
 			delay_ms(100);
 			if (!input(PIN_B0)) {
 				calendario.segundos = 0;
-				calendario.minutos = 03;
-				calendario.horas = 16;
-				calendario.dow = sex;
-				calendario.dia = 27;
-				calendario.mes = 1;
+				calendario.minutos = 26;
+				calendario.horas = 13;
+				calendario.dow = seg;
+				calendario.dia = 2;
+				calendario.mes = 3;
 				calendario.ano = 15;
 				calendario._12h = 0;
 				calendario.am_pm = 0;
@@ -58,7 +58,6 @@ int main(void) {
 					calendario.minutos, calendario.segundos);
 			printf("\n%s     %02d/%02d/%02d", diaSemana, calendario.dia,
 					calendario.mes, calendario.ano);
-			printf("\r");
 		}
 //		delay_ms(1000);
 	} //infinite loop
