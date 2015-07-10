@@ -1,7 +1,7 @@
 CC=ccsc
 PK2=pk2cmd
 
-DEVICE=PIC16F628A
+DEVICE=PIC18F252
 UNIT1=Calendario
 UNIT1_FILE=calendario
 
@@ -14,9 +14,9 @@ PK2FLAGS=-E -P$(DEVICE) -M -R -J -F
 all: $(UNIT1)
 
 $(UNIT1): $(UNIT1_FILE).c
-	$(CC) $(MFLAGS) $(UNIT1_FILE).c
+	$(CC) $(HFLAGS) $(UNIT1_FILE).c
 	
-Burn:
+burn:
 	$(PK2) $(PK2FLAGS) $(UNIT1_FILE).hex
 
 clean:

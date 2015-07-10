@@ -1,0 +1,14 @@
+*.cof
+*.err
+*.esym 
+*.hex
+*.lst
+*.pjt
+*.STA
+*.sym
+*.tre
+*.MCP
+*.PWI
+*.DBK
+*.ccspjt
+*.xsym

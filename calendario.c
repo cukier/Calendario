@@ -5,14 +5,17 @@
 // *      Author: cuki
 // */
 
-#include<16F628A.h>
+#include<18F252.h>
 
-#fuses INTRC_IO
-#use delay(clock=4MHz)
-#use rs232(baud=9600,xmit=PIN_B2)
-#use i2c(master, sda=PIN_B4, scl=PIN_B5, fast=50000, force_sw)
+#fuses HS
+#use delay(clock=8MHz)
+#use rs232(uart1, baud=19200)
+#use i2c(master, i2c1, fast=50000, force_hw)
 
 #include "calendario.h"
+
+#define texto1 "\f%s %s  %02d:%02d:%02d"
+#define texto2 "\n%s     %02d/%02d/%02d"
 
 cal_type calendario;
 int formato[4], AM_PM[3], diaSemana[4], aux;
@@ -54,10 +57,10 @@ int main(void) {
 
 		if (aux != calendario.segundos) {
 			aux = calendario.segundos;
-			printf("\f%s %s  %02d:%02d:%02d", formato, AM_PM, calendario.horas,
-					calendario.minutos, calendario.segundos);
-			printf("\n%s     %02d/%02d/%02d", diaSemana, calendario.dia,
-					calendario.mes, calendario.ano);
+			printf(texto1, formato, AM_PM, calendario.horas, calendario.minutos,
+					calendario.segundos);
+			printf(texto2, diaSemana, calendario.dia, calendario.mes,
+					calendario.ano);
 		}
 //		delay_ms(1000);
 	} //infinite loop
