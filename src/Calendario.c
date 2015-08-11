@@ -29,18 +29,17 @@ int main(int argc, char **argv) {
 	fd = open_port(porta);
 	set_port(19200, fd);
 	write(fd, "\f", 2);
-	usleep(5000);
 
 	for (cont = 0; cont < 3; ++cont) {
+		usleep(1000000);
 		time(&rawtime);
 		timeinfo = localtime(&rawtime);
 		printf("Current local time and date: %s", asctime(timeinfo));
 		write(fd, asctime(timeinfo), 16);
 		write(fd, "\n", 1);
-		usleep(1000000);
 	}
 
 	close(fd);
 
-	return 0;
+	return EXIT_SUCCESS;
 }
