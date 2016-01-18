@@ -12,3 +12,5 @@
 *.DBK
 *.ccspjt
 *.xsym
+*.settings
+*.SDF
