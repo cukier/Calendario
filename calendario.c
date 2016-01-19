@@ -13,16 +13,25 @@
 #use i2c(master, i2c1, fast=1000000, force_hw)
 
 #include "calendario.h"
+//#include <STDLIBM.H>
+#ifndef PRINT_SERIAL
+#include "lcd_4b.c"
+#endif
 
 cal_t calendario;
-//int formato[4], AM_PM[3], diaSemana[4], aux;
-int formato[4], AM_PM[3], aux;
-char *diaSemana;
+int formato[4], AM_PM[3], aux, diaSemana[4];
 
 int main(void) {
 
+//	diaSemana = malloc(4);
+
 	delay_ms(100);
 	initDS1307();
+
+#ifndef PRINT_SERIAL
+	lcd_init();
+#endif
+	delay_ms(100);
 
 	while (TRUE) {
 
@@ -51,17 +60,23 @@ int main(void) {
 		AM_PM[2] = '\0';
 		formato[3] = '\0';
 
-		diaSemana = getDayofWeekExt(calendario);
-//		strcpy(diaSemana, getDayofWeekExt(calendario));
+		getDayofWeekExt(diaSemana, calendario);
 
 		if (aux != calendario.segundos) {
 			aux = calendario.segundos;
+#ifdef PRINT_SERIAL
 			printf(texto1, formato, AM_PM, calendario.horas, calendario.minutos,
 					calendario.segundos);
 			printf(texto2, diaSemana, calendario.dia, calendario.mes,
 					calendario.ano);
+#else
+			printf(lcd, texto1, formato, AM_PM, calendario.horas,
+					calendario.minutos, calendario.segundos);
+			printf(lcd, texto2, diaSemana, calendario.dia, calendario.mes,
+					calendario.ano);
+#endif
 		}
-		//		delay_ms(1000);
+//		delay_ms(1000);
 	} //infinite loop
 	return 0;
 } //main
@@ -174,8 +189,7 @@ int getDayOfWeek(void) {
 	return getReg(DOW_ADDR) & 0x07;
 }
 
-char *getDayofWeekExt(cal_t calendario) {
-	char *str;
+int getDayofWeekExt(int *str, cal_t calendario) {
 
 	strcpy(str, "NON");
 	switch (calendario.dow) {
@@ -206,7 +220,7 @@ char *getDayofWeekExt(cal_t calendario) {
 	}
 	str[3] = '\0';
 
-	return str;
+	return 0;
 }
 
 void getFormato(int *formato, int *AM_PM, cal_t *calendario) {

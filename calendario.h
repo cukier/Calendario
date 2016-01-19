@@ -19,13 +19,8 @@
 #define CTLR_ADDR	0x07
 #define DEBOUNCE 	100
 
-#ifndef PRINT_SERIAL
-#define texto1 "\f%s %s  %02d:%02d:%02d"
-#define texto2 "\n%s     %02d/%02d/%02d"
-#else
-#define texto1 "%s %s %02d:%02d:%02d\n\r"
-#define texto2 "%s      %02d/%02d/%02d\n\r"
-#endif
+#define texto1 "\f%s %s %02d:%02d:%02d"
+#define texto2 "\n\r%s    %02d/%02d/%02d"
 
 typedef enum dow_e {
 	dom = 1, seg, ter, qua, qui, sex, sab
@@ -50,7 +45,7 @@ int getSec(void);
 int getMin(void);
 int getHour(short *AM_PM, short *formato);
 int getDayOfWeek(void);
-char *getDayofWeekExt(cal_t calendario);
+int getDayofWeekExt(int *str, cal_t calendario);
 void getFormato(int *formato, int *AM_PM, cal_t *calendario);
 int getDate(void);
 int getMonth(void);

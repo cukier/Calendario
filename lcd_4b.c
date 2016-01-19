@@ -1,9 +1,9 @@
-#define rs PIN_E0
-#define en PIN_E1
-#define d4 PIN_D4
-#define d5 PIN_D5
-#define d6 PIN_D6
-#define d7 PIN_D7
+#define rs PIN_B2
+#define en PIN_B3
+#define d4 PIN_B4
+#define d5 PIN_B5
+#define d6 PIN_B6
+#define d7 PIN_B7
 
 void lcd_cmd(int cmd) {
 	output_bit(d4, bit_test(cmd, 0));
@@ -22,7 +22,6 @@ void lcd_envia_byte(short endereco, int dado) {
 	lcd_cmd(dado >> 4);
 	lcd_cmd(dado & 0x0f);
 	delay_ms(1);
-	output_d(0);
 }
 
 void lcd_pos_xy(int x, int y) {
